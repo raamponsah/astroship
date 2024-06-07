@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import TrainingCard from "@components/cards/TrainingCard.astro";
+// Filter blog entries with 'draft: false' & date before current date
+const publishedTrainingEntries = await getCollection("training", ({ data }) => {
+  return !data.draft;
+});
+
+// Sort content entries by publication date
+publishedTrainingEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+
+---
+
+<Layout title="Training">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Training Workshops</Fragment>
+      <Fragment slot="desc">
+        We write about building startups and thoughts going on our mind.
+      </Fragment>
+    </Sectionhead>
+    <main class="mt-16 mb-40">
+      <ul class="flex gap-4  max-w-4xl mx-auto">
+        {
+          publishedTrainingEntries.map((trainingEntry, index) => (
+            <li>
+              <TrainingCard status={`${trainingEntry.data.status}`} title={`${trainingEntry.data.title}`} date={`${trainingEntry.data.publishDate}`} imageUrl={`${trainingEntry.data.image.src}`} link={`/training/${trainingEntry.slug}`}/>
+          
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </Container>
+</Layout>

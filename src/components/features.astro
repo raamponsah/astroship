@@ -4,64 +4,65 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Custom Software Development",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+      "We create tailored software solutions that meet your unique business needs, from initial concept to final deployment.",
+    icon: "bx:bxs-devices",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Corporate Training Programs",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+      "Enhance your team's skills with our customized training programs, designed to address your specific industry challenges.",
+    icon: "bx:bxs-chalkboard",
   },
   {
-    title: "On-Demand Components",
+    title: "Website and Web Application Development",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+      "Build responsive, high-performance websites and web applications that provide seamless user experiences across all devices.",
+    icon: "bx:bxs-chalkboard",
   },
   {
-    title: "Broad Integration",
+    title: "Mobile Application Development",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
+      "Develop robust mobile applications for iOS and Android platforms that deliver outstanding performance and usability.",
+    icon: "bx:bxs-mobile",
   },
   {
-    title: "SEO Enabled",
+    title: "AI Integration and Solutions",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
+      "Leverage the power of artificial intelligence with our custom AI solutions, from machine learning models to predictive analytics.",
+    icon: "bx:bxs-brain",
   },
   {
-    title: "Community",
+    title: "Ongoing Support and Maintenance",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+      "Ensure your software and applications remain up-to-date, secure, and efficient with our comprehensive support and maintenance services.",
+    icon: "bx:bxs-wrench",
   },
 ];
+
+
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+<div class="mt-16 md:mt-0 px-40 flex justify-center items-center flex-col py-10">
+  <h2 class="text-4xl lg:text-4xl font-light lg:tracking-tight text-indigo-500">
+    Empowering the Future through Education, Innovation, and AI
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+  <p class="text-lg w-[750px] text-center mt-4 text-slate-600">
+    Skyfusion specializes in cutting-edge education and training solutions, custom software engineering,<wbr/> and advanced AI integration to drive your business forward.
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 px-40">
   {
     features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+      <div class="flex gap-4 items-start ">
+        <div class="mt-1 bg-blue-500 rounded-full  p-2 w-8 h-8 shrink-0 hover:text-slate-900">
           <Icon class="text-white" name={item.icon} />
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        <div> 
+          <h3 class="font-semibold text-slate-500 hover:text-slate-900 text-xl">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed hover:text-slate-900 text-lg">{item.description}</p>
         </div>
       </div>
     ))

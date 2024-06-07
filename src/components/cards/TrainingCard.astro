@@ -1,0 +1,66 @@
+---
+// Props for the TrainingCard component
+import moment from "moment";
+const { title, description, imageUrl, date, author, category, link, status } = Astro.props;
+---
+
+<astro-fragment>
+  <div class="astro-card rounded-lg relative  shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[500px]">
+    <span class="absolute p-1 top-0 z-10 right-0 m-4 rounded text-sm bg-orange-500 text-white font-bold uppercase">{status}</span>
+    <a href={link} class="astro-card__link block relative">
+      <div class="astro-card__image relative">
+        <img class="w-full h-72 object-cover object-center rounded-t-lg" src={imageUrl} alt={title} />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        <div class="absolute inset-0 flex items-end">
+          <div class="astro-card__content px-6 py-4 text-white">
+            <span class="astro-card__category text-sm font-medium uppercase tracking-wider">{category}</span>
+            <h2 class="astro-card__title text-xl font-medium leading-tight mt-2">{title}</h2>
+            <div class="astro-card__meta flex items-center gap-3 mt-3">
+              <span class="astro-card__author text-sm">{author}</span>
+              <!-- <span class="astro-card__date text-sm">{moment(date).calendar()}</span> -->
+            </div>
+            <button class="astro-card__button bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-1 px-2 rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</astro-fragment>
+
+<style>
+  .astro-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .astro-card__image {
+    position: relative;
+  }
+
+  .astro-card__content {
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+    padding: 1.5rem;
+  }
+
+  .astro-card__category {
+    color: #4299e1;
+  }
+
+  .astro-card__title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .astro-card__meta {
+    font-size: 0.875rem;
+    color: #e5e7eb;
+  }
+
+  .astro-card__button {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
+</style>

@@ -4,6 +4,7 @@ import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import '@fontsource-variable/bricolage-grotesque';
+import { ViewTransitions } from "astro:transitions";
 
 
 
@@ -21,8 +22,8 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + "Skyfusion"
+  : "Skyfusion - Starter Template for Astro with Tailwind CSS";
 ---
 
 <!DOCTYPE html>
@@ -39,15 +40,15 @@ const makeTitle = title
       description="Astroship is a starter website template for Astro built with TailwindCSS."
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@vypecode",
+        site: "@skyfusion",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Skyfusion - Educate, Innovate & Integrate`,
           image: resolvedImageWithDomain,
         },
         image: {
@@ -55,8 +56,9 @@ const makeTitle = title
         },
       }}
     />
+    <ViewTransitions></ViewTransitions>
   </head>
-  <body>
+  <body class="relative min-h-screen ">
     <Navbar />
     <slot />
     <Footer />
@@ -69,3 +71,5 @@ const makeTitle = title
     </style>
   </body>
 </html>
+
+

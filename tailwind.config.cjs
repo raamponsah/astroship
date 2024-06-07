@@ -6,12 +6,17 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          "Bricolage Grotesque Variable",
+          // "Bricolage Grotesque Variable",
+          '"degular"',
           "Inter Variable",
           "Inter",
           ...defaultTheme.fontFamily.sans,
         ],
       },
+      backgroundImage: {
+        'hero-bg': "url('/un1.jpg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      }
     },
   },
   plugins: [require("@tailwindcss/typography")],
