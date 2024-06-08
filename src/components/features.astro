@@ -1,5 +1,4 @@
 ---
-// @ts-ignore
 import { Icon } from "astro-icon/components";
 
 const features = [
@@ -40,31 +39,28 @@ const features = [
     icon: "bx:bxs-wrench",
   },
 ];
-
-
 ---
 
-<div class="mt-16 md:mt-0 px-40 flex justify-center items-center flex-col py-10">
-  <h2 class="text-4xl lg:text-4xl font-light lg:tracking-tight text-indigo-500">
+<div class="mt-16 md:mt-0 px-4 md:px-12 lg:px-20 flex justify-center items-center flex-col py-10 text-center">
+  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light lg:tracking-tight text-indigo-500">
     Empowering the Future through Education, Innovation, and AI
   </h2>
-  <p class="text-lg w-[750px] text-center mt-4 text-slate-600">
-    Skyfusion specializes in cutting-edge education and training solutions, custom software engineering,<wbr/> and advanced AI integration to drive your business forward.
+  <p class="text-base sm:text-lg lg:text-xl w-full max-w-3xl mt-4 text-slate-600">
+    Skyfusion specializes in cutting-edge education and training solutions, custom software engineering,
+    <wbr/> and advanced AI integration to drive your business forward.
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 px-40">
-  {
-    features.map((item) => (
-      <div class="flex gap-4 items-start ">
-        <div class="mt-1 bg-blue-500 rounded-full  p-2 w-8 h-8 shrink-0 hover:text-slate-900">
-          <Icon class="text-white" name={item.icon} />
-        </div>
-        <div> 
-          <h3 class="font-semibold text-slate-500 hover:text-slate-900 text-xl">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed hover:text-slate-900 text-lg">{item.description}</p>
-        </div>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 px-4 md:px-12 lg:px-20">
+  {features.map((item) => (
+    <div class="flex gap-4 items-start">
+      <div class="mt-1 bg-blue-500 rounded-full p-2 w-12 h-12 flex items-center justify-center shrink-0 hover:text-slate-900">
+        <Icon class="text-white" name={item.icon} />
       </div>
-    ))
-  }
+      <div> 
+        <h3 class="font-semibold text-slate-700 hover:text-slate-900 text-lg lg:text-xl">{item.title}</h3>
+        <p class="text-slate-600 mt-2 leading-relaxed hover:text-slate-900 text-base lg:text-lg">{item.description}</p>
+      </div>
+    </div>
+  ))}
 </div>

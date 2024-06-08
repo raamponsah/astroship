@@ -6,36 +6,36 @@ import { Icon } from "astro-icon/components";
 ---
 
 <main
-  class="grid lg:grid-cols-2 place-items-center md:pt-12 p-40 md:pb-24 bg-slate-500 bg-[url(/un8.jpg)] bg-center bg-blend-multiply min-h-[70vh] bg-cover  text-white">
+  class="grid lg:grid-cols-2 place-items-center p-6 md:p-12 lg:p-24 bg-slate-500 bg-[url(/un8.jpg)] bg-center bg-blend-multiply min-h-[70vh] bg-cover text-white">
   <div class="py-6 md:order-1 hidden md:block">
-    <!-- <Picture
+    <!-- 
+    <Picture
       src={heroImage}
       alt="Astronaut in the air"
       widths={[200, 400, 600]}
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
       format="avif"
-    /> -->
+    /> 
+    -->
   </div>
   <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter">
       Innovate, Educate, Integrate
     </h1>
-    <p class="text-xl mt-4  max-w-xl text-white">
-      Skyfusion empowers businesses with advanced education and training, bespoke software engineering,<wbr/> and cutting-edge AI integration solutions.
+    <p class="text-lg sm:text-xl mt-4 max-w-xl text-white">
+      Skyfusion empowers businesses with advanced education and training, bespoke software engineering,
+      <wbr/> and cutting-edge AI integration solutions.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
         href="#"
         target="_blank"
-        class="flex gap-1 items-center justify-center rounded-full bg-indigo-600"
+        class="flex gap-1 items-center justify-center rounded-full bg-indigo-600 px-4 py-2 text-lg sm:text-base"
         rel="noopener">
         <!-- <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" /> -->
-
-         Enroll with us today &rarr;
+        Enroll with us today &rarr;
       </Link>
-
     </div>
   </div>
 </main>

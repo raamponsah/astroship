@@ -4,6 +4,18 @@ import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { Icon } from "astro-icon/components";
+import  {supabase}  from "../../../lib/supabase";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token") as any;
+const refreshToken = cookies.get("sb-refresh-token") as any;
+
+const { data, error } = await supabase.auth.getSession()
+
+console.log('====================================');
+console.log(data);
+console.log('====================================');
 
 const menuitems = [
   {
@@ -37,8 +49,8 @@ const menuitems = [
 
 ---
 
-<Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center my-5 px-40">
+
+  <header class="flex  flex-col lg:flex-row justify-between items-center my-5 px-40">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-2xl"
@@ -82,16 +94,31 @@ const menuitems = [
           }
         </ul>
         <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" style="muted" block size="md">Log in</Link>
-          <Link href="#" size="md" block>Sign up for a workshop</Link>
+       {
+        data?.session?.user != null ? (   <Link href="/signin" style="muted" block size="md">Log in</Link>
+        <Link href="/register" size="md" block>Sign up for a workshop</Link>): (
+          <h2>Sign Out</h2>
+        )
+       }
         </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4 ">
-        <a href="#">Log in</a>
-        <Link href="#" size="md" class=" font-semibold text-white bg-indigo-500 rounded-full hover:bg-indigo-400">Join our workshop &rarr; </Link>
+  {
+    data?.session?.user == null ? (
+    <a href="/signin">Log in</a>
+        <Link href="/register" size="md" class=" font-semibold text-white bg-indigo-500 rounded-full hover:bg-indigo-400">Join our workshop &rarr; </Link>
+      
+    ):(
+<div class="w-8 h-8 flex justify-center items-center rounded-full bg-indigo-500 text-white text-2xl font-bold">
+
+    <span id="avatarInitial">A</span>
+  </div>
+
+    )
+  }
       </div>
     </div>
   </header>
-</Container>
+
