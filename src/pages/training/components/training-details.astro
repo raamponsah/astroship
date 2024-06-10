@@ -1,0 +1,50 @@
+---
+const {entry} = Astro.props
+---
+
+<div class="max-w-screen mt-12 ">
+    <h2 class="text-xl text-amber-600 lg:text-xl font-bold mb-2 flex gap-2">
+ 
+      <span>Workshop Details</span></h2>
+    <div class="overflow-hidden border  border-amber-600 rounded-lg">
+      <table class="min-w-full divide-y  divide-amber-600">
+        <tbody class="bg-white divide-y divide-amber-600">
+        <tr>
+          <td class="px-3 py-2 whitespace-nowrap">
+            <p class="text-amber-700 font-bold">Location</p>
+            <p class="text-amber-600">{entry?.data?.workshopDetails?.location!}</p>
+          </td>
+          <td class="px-3 py-2 whitespace-nowrap">
+            <p class="text-amber-700 font-bold">Start Date</p>
+            <p class="text-amber-600">{entry?.data?.workshopDetails?.startDate}</p>
+          </td>
+          <td class="px-3 py-2 whitespace-nowrap">
+            <p class="text-amber-700 font-bold">End Date</p>
+            <p class="text-amber-600">{entry?.data?.workshopDetails?.endDate}</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="px-3 py-2 whitespace-nowrap">
+            <p class="text-amber-700 font-bold">Start Time</p>
+            <p class="text-amber-600">{entry?.data.workshopDetails?.startTime}</p>
+          </td>
+          <td class="px-3 py-2 whitespace-nowrap">
+            <p class="text-amber-700 font-bold">Closing Time</p>
+            <p class="text-amber-600">{entry?.data.workshopDetails?.closingTime}</p>
+          </td>
+          <td class="px-3 py-2 whitespace-nowrap">
+            <p class="text-amber-700 font-bold">Break Time</p>
+            <p class="text-amber-600">{entry?.data.workshopDetails?.breakTime}</p>
+          </td>
+        </tr>
+        <tr>
+
+          <td class="px-3 py-2 whitespace-nowrap" colspan="2">
+            <p class="text-amber-700 font-bold">Other Details</p>
+            <p class="text-amber-600">{entry?.data.workshopDetails?.otherDetails}</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

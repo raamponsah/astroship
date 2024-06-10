@@ -1,0 +1,135 @@
+---
+import { supabase } from "../../../../lib/supabase";
+
+const {entry} = Astro.props;
+const { data, error } = await supabase.auth.getSession();
+---
+
+<div class="relative  overflow-hidden border border-purple-400 bg-gradient-to-r from-pink-200 to-purple-300">
+    <div class="px-6 py-8 md:p-10">
+      <h2 class="text-5xl  font-medium mb-4">
+        ${Math.floor(entry?.data?.actualPrice! - (entry?.data?.actualPrice! * (entry?.data?.discount!)) / 100)} <span
+        class="text-lg text-gray-700"><strike>${entry?.data?.actualPrice}</strike> {entry?.data?.discount}% OFF</span>
+      </h2>
+      <p class="text-sm  mb-2">Learn from industry experts and take your skills to the next level.</p>
+
+
+      <!-- Training Includes -->
+      <div class="mb-4">
+        <p class=" text-lg font-medium mb-1">This training includes:</p>
+        <ul class="text-sm font-medium space-y-2">
+          <li class="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" color="#000000"
+                 fill="none">
+              <path
+                d="M2 7C2 5.59987 2 4.8998 2.27248 4.36502C2.51217 3.89462 2.89462 3.51217 3.36502 3.27248C3.8998 3 4.59987 3 6 3C7.40013 3 8.1002 3 8.63498 3.27248C9.10538 3.51217 9.48783 3.89462 9.72752 4.36502C10 4.8998 10 5.59987 10 7V17C10 18.4001 10 19.1002 9.72752 19.635C9.48783 20.1054 9.10538 20.4878 8.63498 20.7275C8.1002 21 7.40013 21 6 21C4.59987 21 3.8998 21 3.36502 20.7275C2.89462 20.4878 2.51217 20.1054 2.27248 19.635C2 19.1002 2 18.4001 2 17V7Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M6 17H6.00898" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+              <path d="M2 7H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+              <path
+                d="M11.4486 8.26843C11.0937 6.93838 10.9163 6.27336 11.0385 5.69599C11.146 5.18812 11.4108 4.72747 11.7951 4.38005C12.2319 3.98508 12.8942 3.80689 14.2187 3.4505C15.5432 3.09412 16.2055 2.91593 16.7804 3.03865C17.2862 3.1466 17.7449 3.41256 18.0909 3.79841C18.4842 4.23706 18.6617 4.90209 19.0166 6.23213L21.5514 15.7316C21.9063 17.0616 22.0837 17.7266 21.9615 18.304C21.854 18.8119 21.5892 19.2725 21.2049 19.62C20.7681 20.0149 20.1058 20.1931 18.7813 20.5495C17.4568 20.9059 16.7945 21.0841 16.2196 20.9614C15.7138 20.8534 15.2551 20.5874 14.9091 20.2016C14.5158 19.7629 14.3383 19.0979 13.9834 17.7679L11.4486 8.26843Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M17.7812 16.6953L17.7899 16.693" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 8.00019L18.5001 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            <span>
+              Comprehensive PDF Materials
+            </span>
+
+          </li>
+
+          <li class="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" color="#000000"
+                 fill="none">
+              <path
+                d="M6.51734 17.1132C6.91177 17.6905 8.10883 18.9228 9.74168 19.2333M9.86428 22C8.83582 21.8306 2 19.6057 2 12.0926C2 5.06329 8.0019 2 12.0008 2C15.9996 2 22 5.06329 22 12.0926C22 19.6057 15.1642 21.8306 14.1357 22C14.1357 22 13.9267 18.5826 14.0487 17.9969C14.1706 17.4113 13.7552 16.4688 13.7552 16.4688C14.7262 16.1055 16.2043 15.5847 16.7001 14.1874C17.0848 13.1032 17.3268 11.5288 16.2508 10.0489C16.2508 10.0489 16.5318 7.65809 15.9996 7.56548C15.4675 7.47287 13.8998 8.51192 13.8998 8.51192C13.4432 8.38248 12.4243 8.13476 12.0018 8.17939C11.5792 8.13476 10.5568 8.38248 10.1002 8.51192C10.1002 8.51192 8.53249 7.47287 8.00036 7.56548C7.46823 7.65809 7.74917 10.0489 7.74917 10.0489C6.67316 11.5288 6.91516 13.1032 7.2999 14.1874C7.79575 15.5847 9.27384 16.1055 10.2448 16.4688C10.2448 16.4688 9.82944 17.4113 9.95135 17.9969C10.0733 18.5826 9.86428 22 9.86428 22Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>
+              Full access to github code
+            </span>
+
+          </li>
+
+          <li class="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" color="#000000"
+                 fill="none">
+              <path
+                d="M10.8453 2.47782C11.4088 2.15927 11.6906 2 12 2C12.3094 2 12.5912 2.15927 13.1547 2.47782L19.8453 6.25983C20.4088 6.57838 20.6906 6.73766 20.8453 7C21 7.26234 21 7.58089 21 8.21799V15.782C21 16.4191 21 16.7377 20.8453 17C20.6906 17.2623 20.4088 17.4216 19.8453 17.7402L13.1547 21.5222C12.5912 21.8407 12.3094 22 12 22C11.6906 22 11.4088 21.8407 10.8453 21.5222L4.1547 17.7402C3.59117 17.4216 3.3094 17.2623 3.1547 17C3 16.7377 3 16.4191 3 15.782V8.21799C3 7.58089 3 7.26234 3.1547 7C3.3094 6.73766 3.59117 6.57838 4.1547 6.25983L10.8453 2.47782Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M15.5 4.27051L13.134 5.55062C12.5803 5.85019 12.3035 5.99998 12 5.99998C11.6965 5.99998 11.4197 5.85019 10.866 5.55062L8.5 4.27051"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 11.6154V22M12 11.6154L20.5 7M12 11.6154L3.5 7" stroke="currentColor"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M3 12L5.89443 13.5585C6.43234 13.8482 6.7013 13.993 6.85065 14.2532C7 14.5135 7 14.8373 7 15.485V19"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M21 12L18.1056 13.5585C17.5677 13.8482 17.2987 13.993 17.1493 14.2532C17 14.5135 17 14.8373 17 15.485V19"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>
+              {entry?.data?.capstoneProjects} Capstone Code Projects
+              </span>
+
+          </li>
+
+          <li class="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" color="#000000"
+                 fill="none">
+              <circle cx="12" cy="13" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M5 19L3 21M19 19L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+              <path
+                d="M19 3.5697L19.5955 3.27195C20.4408 2.84932 20.7583 2.89769 21.4303 3.5697C22.1023 4.2417 22.1507 4.55924 21.728 5.4045L21.4303 6M5 3.5697L4.4045 3.27195C3.55924 2.84932 3.2417 2.89769 2.5697 3.5697C1.89769 4.2417 1.84932 4.55924 2.27195 5.4045L2.5697 6"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M12 9.5V13.5L14 15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+              <path d="M12 3.5V2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+              <path d="M10 2H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            <span>{entry?.data?.duration!} hours of instruction</span>
+          </li>
+
+          <li class="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" color="#000000"
+                 fill="none">
+              <path
+                d="M4.5 14.5C4.5 10.3579 7.85787 7 12 7C16.1421 7 19.5 10.3579 19.5 14.5C19.5 18.6421 16.1421 22 12 22C7.85787 22 4.5 18.6421 4.5 14.5Z"
+                stroke="currentColor" stroke-width="1.5" />
+              <path
+                d="M9 14.5C9 12.8431 10.2952 11.5 11.8929 11.5H12.1071C13.7048 11.5 15 12.8431 15 14.5C15 16.1569 13.7048 17.5 12.1071 17.5H11.8929C10.2952 17.5 9 16.1569 9 14.5Z"
+                stroke="currentColor" stroke-width="1.5" />
+              <path d="M13.5596 2L10.999 7M17.9995 2L15.1776 7.60217" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+              <path d="M10.4399 2L12 4.59405M6 2L8.82144 7.5" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+            </svg>
+            <span>Certificate of completion</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Share Button -->
+      <div>
+
+      </div>
+      <!-- Register Button -->
+     <a href=`${entry?.slug}/payment`
+        class="bg-white text-purple-500 font-bold py-2 px-6 w-full hover:bg-purple-100 hover:text-purple-600 transition duration-300 ease-in-out">
+        Register Now
+      </a>
+    
+
+
+
+    </div>
+  </div>

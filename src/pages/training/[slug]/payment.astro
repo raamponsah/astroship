@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import moment from "moment";
+import PriceTag from "./../components/price-tag.astro";
+import TrainingDetails from "./../components/training-details.astro";
+
+export async function getStaticPaths() {
+  const trainingEntries = await getCollection("training");
+  return trainingEntries.map((entry) => ({
+    params: { slug: entry?.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+export const prerender = true;
+
+const workshopStartDate = moment(entry?.data?.workshopDetails?.startDate).fromNow(true);
+const discountPrice = Math.floor(entry?.data?.actualPrice! - (entry?.data?.actualPrice! * (entry?.data?.discount!)) / 100);
+const formattedPrice = `${discountPrice} (${entry?.data?.discount}% OFF)`;
+const pageTitle = entry?.data?.title;
+const pageDescription = entry?.data?.teaser;
+const bannerImageUrl = entry?.data?.image?.src;
+---
+<Layout title={pageTitle}>
+  <Container>
+    <div class="max-w-screen-xl mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <div class="rounded-lg relative overflow-hidden bg-white  mb-8">
+            <img src={bannerImageUrl} alt={pageTitle} class="w-full h-72 object-cover" />
+            <div class=" mt-5">
+              <h3 class="text-sm font-bold uppercase">{entry?.data?.numberOfDays}-Day Training Workshop</h3>
+              <h1 class="text-lg sm:text-sm md:text-lg text-indigo-500 lg:text-xl font-bold">{pageTitle}</h1>
+              <p class="">{pageDescription}</p>
+              <!-- <p class="text-xs sm:text-sm md:text-base mb-2 px-4 py-1 shadow-lg border border-dashed border-white bg-slate-500 rounded-full">
+                Workshop training starts in {workshopStartDate}
+              </p> -->
+            </div>
+          </div>
+          <div>
+            <h2 class="text-xl lg:text-2xl font-bold mb-2">Course Description</h2>
+            <p class="text-gray-700">{entry?.data?.description}</p>
+          </div>
+          <TrainingDetails entry={entry}/>
+        </div>
+        <div>
+          <div class="bg-gray-100 p-8 rounded-lg shadow-md">
+            <h2 class="text-xl lg:text-2xl font-semibold mb-4">Payment Details</h2>
+            <form action="/payment-process" method="POST">
+              <label for="cardNumber" class="block mb-2">Card Number</label>
+              <input type="text" id="cardNumber" name="cardNumber" class="w-full border rounded-md px-4 py-2 mb-4" required>
+              <label for="expiryDate" class="block mb-2">Expiry Date</label>
+              <input type="text" id="expiryDate" name="expiryDate" class="w-full border rounded-md px-4 py-2 mb-4" required>
+              <label for="cvv" class="block mb-2">CVV</label>
+              <input type="text" id="cvv" name="cvv" class="w-full border rounded-md px-4 py-2 mb-4" required>
+              <button type="submit" class="bg-purple-500 text-white font-bold py-2 px-4 rounded-md hover:bg-purple-600">Pay Now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-8 mb-5">
+        <a href="/training" class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition inline-block">← Back to Workshops</a>
+      </div>
+    </div>
+  </Container>
+</Layout>
