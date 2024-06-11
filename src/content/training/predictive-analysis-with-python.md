@@ -38,7 +38,7 @@ workshopDetails:
   otherDetails: "Breakfast and Lunch inclusive | Free Internet access"
   breakTime: "12:30pm"
   closingTime: "4:00pm"
-actualPrice: 150
+actualPrice: 1650
 discount: 15.00
 capstoneProjects: 2
 

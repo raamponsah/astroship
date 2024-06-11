@@ -11,15 +11,12 @@ import '@fontsource-variable/manrope';
 // import "@fontsource/poppins/400.css";
 import { ViewTransitions } from "astro:transitions";
 import '../../app/globals.css';
+import { supabase } from "../lib/supabase";
 export interface Props {
   title: string;
 }
 
-const user = {
-  name: "Jane Doe",
-  avatar: "https://via.placeholder.com/150",
-};
-
+const {data,error} = await supabase.auth.getSession()
 ---
 <!DOCTYPE html>
 <html lang="en">

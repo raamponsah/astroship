@@ -5,7 +5,7 @@ import Container from "@components/container.astro";
 import moment from "moment";
 import PriceTag from "./../components/price-tag.astro";
 import TrainingDetails from "./../components/training-details.astro";
-import PaymentForm from "../components/payment-form";
+import PaymentForm from "../components/payment-form.astro";
 
 export async function getStaticPaths() {
   const trainingEntries = await getCollection("training");
@@ -28,9 +28,9 @@ const bannerImageUrl = entry?.data?.image?.src;
 ---
 <Layout title={pageTitle}>
   <Container>
-    <div class="max-w-screen-xl mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-20">
+    <div class="max-w-screen-2xl mx-auto mt-12 px-4 lg:px-5">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div>
+        <div  class="w-full">
           <div class="rounded-lg relative overflow-hidden bg-white  mb-8">
             <img src={bannerImageUrl} alt={pageTitle} class="w-full h-72 object-cover" />
             <div class=" mt-5">
@@ -48,11 +48,8 @@ const bannerImageUrl = entry?.data?.image?.src;
           </div>
           <TrainingDetails entry={entry}/>
         </div>
-        <div>
-          <div class="bg-slate-100 p-8 ">
-            <h2 class="text-xl lg:text-2xl font-semibold mb-4">Payment Details</h2>
-          <PaymentForm client:only/>
-          
+        <div class="">
+          <PaymentForm entry={entry}/>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@
         "./src/*"
       ],
       "@lib/*": [
-        "lib/*"
+        "src/lib/*"
       ],
       "@utils/*": [
         "utils/*"

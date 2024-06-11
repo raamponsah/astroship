@@ -13,7 +13,7 @@ const publishedTrainingEntries = await getCollection("training", ({ data }) => {
 
 // Sort content entries by publication date
 publishedTrainingEntries.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+  return a.data.publishDate.valueOf() - b.data.publishDate.valueOf();
 });
 
 ---
@@ -23,14 +23,14 @@ publishedTrainingEntries.sort(function (a, b) {
     <Sectionhead>
       <Fragment slot="title">Training Workshops</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        Empowering professionals with cutting-edge tech skills for a future-ready workforce.
       </Fragment>
     </Sectionhead>
     <main class="mt-8 mb-16">
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
         {
           publishedTrainingEntries.map((trainingEntry, index:number) => (
-            <li key={index}>
+            <li>
               <TrainingCard 
                 status={trainingEntry.data.status} 
                 title={trainingEntry.data.title} 

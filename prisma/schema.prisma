@@ -1,66 +1,14 @@
-// schema.prisma
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id          Int              @id @default(autoincrement())
-  email       String           @unique
-  password    String
-  name        String?
-  workshops   UserWorkshop[]
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
-}
-
-model Workshop {
-  id          Int              @id @default(autoincrement())
-  title       String
-  description String
-  date        DateTime
-  resources   WorkshopResource[]
-  users       UserWorkshop[]
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
-}
-
-model WorkshopResource {
-  id          Int              @id @default(autoincrement())
-  workshopId  Int
-  title       String
-  url         String
-  type        ResourceType
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
-
-  workshop    Workshop         @relation(fields: [workshopId], references: [id])
-
-  @@index([workshopId])
-}
-
-model UserWorkshop {
-  userId      Int
-  workshopId  Int
-  paid        Boolean          @default(false)
-  paymentDate DateTime?
-
-  user        User             @relation(fields: [userId], references: [id])
-  workshop    Workshop         @relation(fields: [workshopId], references: [id])
-
-  @@id([userId, workshopId])
-  @@index([userId])
-  @@index([workshopId])
-}
-
-enum ResourceType {
-  PDF
-  VIDEO
-  LINK
-  OTHER
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }

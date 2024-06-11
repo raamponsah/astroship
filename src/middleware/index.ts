@@ -1,5 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../lib/supabase";
 import micromatch from "micromatch";
 
 const protectedRoutes = ["/dashboard/**"];

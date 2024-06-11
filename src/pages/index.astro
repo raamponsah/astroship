@@ -1,19 +1,53 @@
 ---
+import { getCollection } from "astro:content";
+
 import Container from "@components/container.astro";
 import Cta from "@components/cta.astro";
 import Features from "@components/features.astro";
 import Hero from "@components/hero.astro";
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
+import TrainingCard from "@components/cards/TrainingCard.astro";
 
+const publishedTrainingEntries = await getCollection("training", ({ data }) => {
+  return !data.draft;
+});
 
+// Sort content entries by publication date
+publishedTrainingEntries.sort(function (a, b) {
+  return a.data.publishDate.valueOf() - b.data.publishDate.valueOf();
+}).splice(1,3);
 ---
 
 <Layout title="Home">
   <Container>
     <Hero />
+  
+    <div class="mt-8 my-24">
+      <h2 class="flex justify-center my-6 items-center text-3xl ">
+        Trending Workshops
+      </h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
+        {
+          publishedTrainingEntries.map((trainingEntry, index:number) => (
+            <li>
+              <TrainingCard 
+                status={trainingEntry.data.status} 
+                title={trainingEntry.data.title} 
+                date={trainingEntry.data.publishDate} 
+                imageUrl={trainingEntry.data.image.src} 
+                link={`/training/${trainingEntry.slug}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
     <Features />
+
     <Logos />
+
     <Cta />
   </Container>
 </Layout>

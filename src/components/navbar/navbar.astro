@@ -2,7 +2,7 @@
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
-import { supabase } from "../../../lib/supabase";
+import { supabase } from "../../lib/supabase";
 import DropdownComponent from "@components/react-components/dropdown";
 
 
@@ -24,10 +24,10 @@ const menuitems = [
 ---
 
 
-<header class="flex flex-col lg:flex-row justify-between items-center my-5 px-40">
+<header class="flex z-10 top-0 bg-white shadow fixed py-5 flex-col lg:flex-row justify-between items-center px-40">
   <Astronav>
     <div class="flex w-full lg:w-auto items-center justify-between">
-      <a href="/" class="text-2xl">
+      <a href="/" class="text-3xl uppercase font-bold">
         <span class="font-bold text-blue-800">Sky</span
         ><span class="text-blue-500">fusion</span>
       </a>
@@ -49,7 +49,7 @@ const menuitems = [
               <li>
                 <a
                   href={item.path}
-                  class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
+                  class="flex lg:px-3 py-2 items-center text-lg text-gray-600 hover:text-gray-900"
                 >
                   <span>{item.title}</span>
                   {item.badge && (
@@ -69,7 +69,7 @@ const menuitems = [
         {data?.session?.user ? (
           <>
             <Link href="/signin" style="muted" block size="md">Log in</Link>
-            <Link href="/register" size="md" block>Sign up for a workshop</Link>
+            <Link href="/register" size="md" block>Sign up for free</Link>
           </>
         ) : (
           <h2>Sign Out</h2>
@@ -80,12 +80,24 @@ const menuitems = [
   <div>
     <div class="hidden lg:flex items-center gap-4">
       {data?.session?.user ? (
-        <DropdownComponent client:load></DropdownComponent>
+        // <DropdownComponent client:load></DropdownComponent>
+        <a href="/dashboard" class="flex gap-2 bg-indigo-500 rounded-full px-5 py-1 text-white">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+    <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" />
+    <path d="M11 7L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M7 7L8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M7 12L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M7 17L8 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M11 12L17 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M11 17L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+</svg>
+ <span>My Account</span>
+        </a>
       ) : (
         <>
-          <a href="/signin">Log in</a>
+          {/* <a href="/signin">Log in</a> */}
           <Link href="/register" size="md" class="font-semibold text-white bg-indigo-500 rounded-full hover:bg-indigo-400">
-            Join our workshop &rarr;
+            Register for free &rarr;
           </Link>
         </>
       )}
