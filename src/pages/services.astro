@@ -4,13 +4,14 @@ import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import { ClerkLayout } from "astro-clerk-auth/components/control";
 
 // Filter team entries with 'draft: false' & date before current date
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 ---
-
+<ClerkLayout>
 <Layout title="About">
   <Container>
     <Sectionhead>
@@ -55,3 +56,4 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     </div>
   </Container>
 </Layout>
+</ClerkLayout>

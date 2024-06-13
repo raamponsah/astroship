@@ -12,3 +12,13 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Workshop {
+  id    String @id @default(cuid())
+  title String
+}
+
+model learner {
+  id    String @id @default(cuid())
+  email String
+}

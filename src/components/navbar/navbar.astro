@@ -2,15 +2,13 @@
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
-import { supabase } from "../../lib/supabase";
-import DropdownComponent from "@components/react-components/dropdown";
+import { SignedIn, SignedOut } from "astro-clerk-auth/components/control";
+import { UserButton, SignIn } from "astro-clerk-auth/components/interactive";
 
 
-const { data, error } = await supabase.auth.getSession();
 
-if (error) {
-  console.error("Error fetching session:", error);
-}
+
+const { auth, currentUser } =  Astro.locals;
 
 const menuitems = [
   { title: "Home", path: "/" },
@@ -66,40 +64,33 @@ const menuitems = [
         ))}
       </ul>
       <div class="lg:hidden flex items-center mt-3 gap-4">
-        {data?.session?.user ? (
-          <>
-            <Link href="/signin" style="muted" block size="md">Log in</Link>
-            <Link href="/register" size="md" block>Sign up for free</Link>
-          </>
+        {auth && auth().userId ? (  // Check if user is authenticated
+    <SignedIn>
+            <UserButton />
+          </SignedIn>
         ) : (
-          <h2>Sign Out</h2>
+          <SignedOut>
+            <SignIn />
+          </SignedOut>
         )}
       </div>
     </MenuItems>
   </Astronav>
   <div>
+
+
+
     <div class="hidden lg:flex items-center gap-4">
-      {data?.session?.user ? (
-        // <DropdownComponent client:load></DropdownComponent>
-        <a href="/dashboard" class="flex gap-2 bg-indigo-500 rounded-full px-5 py-1 text-white">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
-    <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" />
-    <path d="M11 7L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-    <path d="M7 7L8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-    <path d="M7 12L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-    <path d="M7 17L8 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-    <path d="M11 12L17 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-    <path d="M11 17L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-</svg>
- <span>My Account</span>
+      {auth && auth().userId ? (  // Check if user is authenticated
+   <a href="/dashboard"  class="group relative inline-flex items-center justify-center overflow-hidden text-sm font-medium transition duration-300 ease-in-out rounded-md px-3 py-1 shadow-sm bg-gradient-to-b from-white/20 to-transparent opacity-70 hover:opacity-100 ring-1 ring-indigo-500 bg-indigo-500 text-white">
+          Dashboard
         </a>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       ) : (
-        <>
-          {/* <a href="/signin">Log in</a> */}
-          <Link href="/register" size="md" class="font-semibold text-white bg-indigo-500 rounded-full hover:bg-indigo-400">
-            Register for free &rarr;
-          </Link>
-        </>
+       <a href="/sign-in" class="bg-indigo-500 px-5 py-2 text-white rounded-full inline-block">Sign In</a>
       )}
     </div>
   </div>

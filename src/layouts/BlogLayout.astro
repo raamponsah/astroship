@@ -2,10 +2,12 @@
 import Container from "@components/container.astro";
 import { getFormattedDate } from "@utils/all";
 import Layout from "./Layout.astro";
+import { ClerkProvider } from "@clerk/clerk-react";
+const apiKey = import.meta.env.PUBLIC_ASTRO_APP_CLERK_PUBLISHABLE_KEY;
 
 const { frontmatter } = Astro.props;
 ---
-
+<ClerkProvider publishableKey={apiKey}>
 <Layout title={frontmatter.title}>
   <Container>
     <div class="mx-auto max-w-[735px] mt-14">
@@ -47,3 +49,4 @@ const { frontmatter } = Astro.props;
     </div>
   </Container>
 </Layout>
+</ClerkProvider>

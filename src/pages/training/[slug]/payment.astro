@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import moment from "moment";
-import PriceTag from "./../components/price-tag.astro";
 import TrainingDetails from "./../components/training-details.astro";
-import PaymentForm from "../components/payment-form.astro";
+import PaymentForm from "../components/payment-form";
+import {getEntry} from "astro:content";
+import { ClerkLayout } from "astro-clerk-auth/components/control";
 
 export async function getStaticPaths() {
   const trainingEntries = await getCollection("training");
@@ -15,9 +16,24 @@ export async function getStaticPaths() {
   }));
 }
 
-const { entry } = Astro.props;
+const {auth} = Astro.locals
+
+if(!auth().userId){
+   return Astro.redirect('/sign-in')
+}
+
+
+const { slug } = Astro.params;
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
+
+const entry = await getEntry("training", slug);
+if (entry === undefined) {
+  return Astro.redirect("/404");
+}
 const { Content } = await entry.render();
-export const prerender = true;
+
 
 const workshopStartDate = moment(entry?.data?.workshopDetails?.startDate).fromNow(true);
 const discountPrice = Math.floor(entry?.data?.actualPrice! - (entry?.data?.actualPrice! * (entry?.data?.discount!)) / 100);
@@ -42,6 +58,8 @@ const bannerImageUrl = entry?.data?.image?.src;
               </p> -->
             </div>
           </div>
+
+
           <div>
             <h2 class="text-xl lg:text-2xl font-bold mb-2">Course Description</h2>
             <p class="text-gray-700">{entry?.data?.description}</p>
@@ -49,13 +67,14 @@ const bannerImageUrl = entry?.data?.image?.src;
           <TrainingDetails entry={entry}/>
         </div>
         <div class="">
-          <PaymentForm entry={entry}/>
+
+          <PaymentForm entry={entry} email={auth().sessionClaims?.email} client:only="react" />
           </div>
         </div>
       </div>
       <div class="text-center mt-8 mb-5">
         <a href="/training" class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition inline-block">← Back to Workshops</a>
       </div>
-    </div>
+
   </Container>
 </Layout>

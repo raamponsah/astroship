@@ -8,6 +8,7 @@ import Hero from "@components/hero.astro";
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
 import TrainingCard from "@components/cards/TrainingCard.astro";
+import { ClerkLayout } from "astro-clerk-auth/components/control";
 
 const publishedTrainingEntries = await getCollection("training", ({ data }) => {
   return !data.draft;
@@ -17,37 +18,41 @@ const publishedTrainingEntries = await getCollection("training", ({ data }) => {
 publishedTrainingEntries.sort(function (a, b) {
   return a.data.publishDate.valueOf() - b.data.publishDate.valueOf();
 }).splice(1,3);
+
 ---
 
-<Layout title="Home">
-  <Container>
-    <Hero />
-  
-    <div class="mt-8 my-24">
-      <h2 class="flex justify-center my-6 items-center text-3xl ">
-        Trending Workshops
-      </h2>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
-        {
-          publishedTrainingEntries.map((trainingEntry, index:number) => (
-            <li>
-              <TrainingCard 
-                status={trainingEntry.data.status} 
-                title={trainingEntry.data.title} 
-                date={trainingEntry.data.publishDate} 
-                imageUrl={trainingEntry.data.image.src} 
-                link={`/training/${trainingEntry.slug}`}
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+<ClerkLayout>
+  <Layout title="Home">
+    <Container>
+      <Hero />
 
-    <Features />
+      <div class="mt-8 my-24">
+        <h2 class="flex justify-center my-6 items-center text-3xl ">
+          Trending Workshops
+        </h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
+          {
+            publishedTrainingEntries.map((trainingEntry, index:number) => (
+              <li>
+                <TrainingCard
+                  status={trainingEntry.data.status}
+                  title={trainingEntry.data.title}
+                  date={trainingEntry.data.publishDate}
+                  imageUrl={trainingEntry.data.image.src}
+                  link={`/training/${trainingEntry.slug}`}
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
-    <Logos />
+      <Features />
 
-    <Cta />
-  </Container>
-</Layout>
+      <Logos />
+
+      <Cta />
+    </Container>
+  </Layout>
+
+</ClerkLayout>

@@ -1,88 +1,20 @@
-import { defineMiddleware } from "astro:middleware";
-import { supabase } from "../lib/supabase";
-import micromatch from "micromatch";
+import { clerkMiddleware, createRouteMatcher } from "astro-clerk-auth/server";
 
-const protectedRoutes = ["/dashboard/**"];
-const redirectRoutes = ["/signin/**", "/register/**"];
-// const proptectedAPIRoutes = ["/api/guestbook(|/)"];
+// Only protect /user routes
+const isProtectedPage = createRouteMatcher(['/user(.*)']);
 
-export const onRequest = defineMiddleware(
-  async ({ locals, url, cookies, redirect }:any, next) => {
-    if (micromatch.isMatch(url.pathname, protectedRoutes)) {
-      const accessToken = cookies.get("sb-access-token");
-      const refreshToken = cookies.get("sb-refresh-token");
+// Mark /training routes as public
+const isPublicRoute = createRouteMatcher(['/training(.*)']);
 
-      if (!accessToken || !refreshToken) {
-        return redirect("/signin");
-      }
-
-      const { data, error } = await supabase.auth.setSession({
-        refresh_token: refreshToken.value,
-        access_token: accessToken.value,
-      });
-
-      if (error) {
-        cookies.delete("sb-access-token", {
-          path: "/",
-        });
-        cookies.delete("sb-refresh-token", {
-          path: "/",
-        });
-        return redirect("/signin");
-      }
-
-      locals.email = data.user?.email! as any;
-      cookies.set("sb-access-token", data?.session?.access_token!, {
-        sameSite: "strict",
-        path: "/",
-        secure: true,
-      });
-      cookies.set("sb-refresh-token", data?.session?.refresh_token!, {
-        sameSite: "strict",
-        path: "/",
-        secure: true,
-      });
-    }
-
-    if (micromatch.isMatch(url.pathname, redirectRoutes)) {
-      const accessToken = cookies.get("sb-access-token");
-      const refreshToken = cookies.get("sb-refresh-token");
-
-      if (accessToken && refreshToken) {
-        return redirect("/dashboard");
-      }
-    }
-
-    // if (micromatch.isMatch(url.pathname, proptectedAPIRoutes)) {
-    //   const accessToken = cookies.get("sb-access-token");
-    //   const refreshToken = cookies.get("sb-refresh-token");
-
-    //   // Check for tokens
-    //   if (!accessToken || !refreshToken) {
-    //     return new Response(
-    //       JSON.stringify({
-    //         error: "Unauthorized",
-    //       }),
-    //       { status: 401 },
-    //     );
-    //   }
-
-    //   // Verify the tokens
-    //   const { error } = await supabase.auth.setSession({
-    //     access_token: accessToken.value,
-    //     refresh_token: refreshToken.value,
-    //   });
-
-    //   if (error) {
-    //     return new Response(
-    //       JSON.stringify({
-    //         error: "Unauthorized",
-    //       }),
-    //       { status: 401 },
-    //     );
-    //   }
-    // }
-
+export const onRequest = clerkMiddleware((auth, context, next) => {
+  // Skip auth check for public routes
+  if (isPublicRoute(context.request)) {
     return next();
-  },
-);
+  }
+
+  // Check authentication for protected routes
+  if (isProtectedPage(context.request) && !auth().userId) {
+    return auth().redirectToSignIn();
+  }
+  return next();
+});

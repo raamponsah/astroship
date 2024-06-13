@@ -3,14 +3,14 @@ import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import '@fontsource/poppins';
-// Supports weights 100-900
 import '@fontsource-variable/work-sans';
-// import "@fontsource/inter/variable.css";
-// Supports weights 200-800
 import '@fontsource-variable/manrope';
-// import "@fontsource/poppins/400.css";
-import { ViewTransitions } from "astro:transitions";
 import '../../app/globals.css';
+import { ClerkLayout } from "astro-clerk-auth/components/control";
+
+import { ClerkProvider, SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/clerk-react';
+import { ViewTransitions } from 'astro:transitions';
+
 export interface Props {
   title: string;
 }
@@ -20,10 +20,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.site).toString();
 
 const { title } = Astro.props;
-
 const makeTitle = title ? `${title} | Skyfusion` : "Skyfusion - Starter Template for Astro with Tailwind CSS";
 ---
 
+
+<ClerkLayout>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,7 +53,7 @@ const makeTitle = title ? `${title} | Skyfusion` : "Skyfusion - Starter Template
         },
       }}
     />
-    <ViewTransitions />
+ <!--<ViewTransitions/>-->
   </head>
   <body class="relative text-gray-900 dark:bg-gray-900 dark:text-gray-50 transition-colors duration-300 ease-in-out font-inter">
   
@@ -88,3 +89,4 @@ const makeTitle = title ? `${title} | Skyfusion` : "Skyfusion - Starter Template
     </style>
   </body>
 </html>
+</ClerkLayout>
