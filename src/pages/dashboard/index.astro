@@ -1,5 +1,11 @@
 ---
+import { supabase } from '../../lib/supabase';
 import DashboardLayout from "@layouts/DashboardLayout.astro";
+
+const { data, error } = await supabase
+  .storage
+  .listBuckets()
+console.log("PERX ",data);
 ---
 
 <DashboardLayout title="Dashboard">
