@@ -1,6 +1,7 @@
-"use client";
+"use server";
 
 import PaystackPop from '@paystack/inline-js';
+import { supabase } from "../../../lib/supabase.js";
 
 const PaymentForm = ({ entry, email }) => {
   const price = Math.floor(entry?.data?.actualPrice - (entry?.data?.actualPrice * (entry?.data?.discount || 0)) / 100);
@@ -42,9 +43,16 @@ const PaymentForm = ({ entry, email }) => {
           }
         ]
       },
-      onSuccess: (transaction) => {
-        console.log(transaction);
-        window.location.href = '/success';
+      onSuccess: async (transaction) => {
+        const { error } = await supabase
+          .from('learner_ledger')
+          .insert({
+            email:email,
+            workshop_code:entry?.data?.workshopSecurityCode,
+            paid: parseFloat(price),
+            workshop_title:entry?.data?.title,
+          })
+          window.location.href = '/success';
       },
       onCancel: () => {
         console.log('Transaction was cancelled');

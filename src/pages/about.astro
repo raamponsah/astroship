@@ -10,52 +10,73 @@ import Cta from "@components/cta.astro";
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
+// export const prerender = true;
 ---
 
 <Layout title="About">
   <Container>
     <Sectionhead>
       <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="desc">We are a small passionate and innovative team.</Fragment>
     </Sectionhead>
 
- <div class="flex px-40 gap-20 flex-row-reverse">
-  <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16 pr-10">
-    <h2 class="font-bold text-3xl text-gray-800">
-      Rebuilding Strong Strategies with Cutting-Edge Technologies
-    </h2>
-    <p class="text-lg leading-relaxed text-slate-500">
-      At Skyfusion, we're dedicated to transforming the future of work through innovation, education, and technology. Our mission is to create smarter, more sustainable, and fulfilling ways of working by integrating cutting-edge software engineering, comprehensive training programs, and advanced AI solutions. We envision a world where people and companies collaborate seamlessly to achieve their highest potential.</p>
+    <div class="flex px-40 flex-row-reverse">
+      <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16 pr-10">
+        <h2 class="font-bold text-3xl text-gray-800">
+          Empowering Through Innovation
+        </h2>
+        <p class="text-lg leading-relaxed text-slate-500">
+          Skyfusion operates on a transformative model of practical, concise workshop sessions designed to drive
+          meaningful change. As a pioneering tech education startup registered under Ghana Laws (registration number
+          BN723620823), we specialize in demystifying complex technological concepts through hands-on learning
+          experiences. Our workshops cater to a diverse audience, including corporate teams, individuals seeking career
+          advancement, and students eager to bridge the gap between theory and application.
 
-     <p class="text-lg leading-relaxed text-slate-500"> Skyfusion was founded with a passion for empowering individuals and organizations to excel in the digital age. We believe that by fostering an environment of creativity, learning, and collaboration, we can unlock unprecedented opportunities and drive meaningful progress. Whether you're looking to enhance your skills, integrate AI into your business, or develop custom software solutions, Skyfusion is here to guide you every step of the way.
-    </p>
-  </div>
-  <div class="grid  mx-auto max-w-4xl mt-12">
-    {
-      publishedTeamMembers.map((teamMemberEntry) => (
-        <div class="group">
-          <div class="w-full">
-            <Picture
-              src={teamMemberEntry.data.avatar.src}
-              alt={teamMemberEntry.data.avatar.alt}
-              sizes="(max-width: 800px) 100vw, 400px"
-              width={500}
-              height={500}
-              class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center"
-            />
-          </div>
 
-          {/* <div class="mt-4 text-center">
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-500">
+          Our vibrant, small team is dedicated to delivering impactful tech education. Led by our innovative and
+          practical founder, <a href="https://raphaelamponsah.com/" class="underline text-indigo-500">Raphael Amponsah</a>, we are committed to fostering a deep understanding of technology's inner
+          workings. Raphael's vision and expertise guide our efforts to create workshops that not only teach but also
+          inspire and empower participants to apply their newfound skills in real-world scenarios.
+        </p>
+
+        <p class="text-lg leading-relaxed text-slate-500">
+          At Skyfusion, we believe in the power of focused, actionable learning. Our approach combines practical
+          insights with theoretical foundations, ensuring that participants gain both immediate skills and a deep
+          understanding of technological processes. Whether you're diving into coding, exploring digital marketing
+          strategies, or mastering data analytics, our workshops are meticulously crafted to deliver impactful results
+          in a short timeframe. Join us at Skyfusion and embark on a journey of rapid skill development and innovation
+          in the ever-evolving tech landscape.
+        </p>
+      </div>
+      <div class="grid  mx-auto max-w-4xl mt-12">
+        {
+          publishedTeamMembers.map((teamMemberEntry) => (
+            <div class="group">
+              <div class="w-full">
+                <Picture
+                  src={teamMemberEntry.data.avatar.src}
+                  alt={teamMemberEntry.data.avatar.alt}
+                  sizes="(max-width: 800px) 100vw, 400px"
+                  width={500}
+                  height={500}
+                  class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center"
+                />
+              </div>
+
+              {/* <div class="mt-4 text-center">
             <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
             <h3 class="text-sm text-slate-500">
               {teamMemberEntry.data.title}
             </h3>
           </div> */}
-        </div>
-      ))
-    }
-  </div>
- </div>
-    <Cta/>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <Cta />
   </Container>
 </Layout>

@@ -43,6 +43,7 @@ const trainingCollection = defineCollection({
       description: z.string(),
 
     })),
+    workshopSecurityCode:z.string(),
     capstoneProjects:z.optional(z.number().default(0)),
     actualPrice: z.optional(z.number()),
     discount: z.optional(z.number()),

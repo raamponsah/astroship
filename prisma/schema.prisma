@@ -7,78 +7,10 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model Workshop {
-  id             Int                 @id @default(autoincrement())
-  title          String
-  description    String
-  date           DateTime
-  resources      Resource[]
-  learners       Learner[]           @relation(references: [id])
-  comments       Comment[]
-  completedBy    CompletedWorkshop[]
-  workshopPayers Payment[] // New relation to track payments for this workshop
-}
-
-model Learner {
-  id         Int                 @id @default(autoincrement())
-  name       String
-  email      String              @unique
-  comments   Comment[]
-  completed  CompletedWorkshop[]
-  payments   Payment[] // New relation to track payments made by the learner
-  Workshop   Workshop?           @relation(fields: [workshopId], references: [id])
-  workshopId Int?
-}
-
-model Resource {
-  id         Int          @id @default(autoincrement())
-  type       ResourceType
-  title      String
-  url        String
-  workshopId Int
-  workshop   Workshop     @relation(fields: [workshopId], references: [id])
-}
-
-enum ResourceType {
-  PDF
-  Video
-  Link
-  Document
-  Other
-}
-
-model Comment {
-  id         Int      @id @default(autoincrement())
-  text       String
-  createdAt  DateTime @default(now())
-  workshopId Int
-  learnerId  Int
-  workshop   Workshop @relation(fields: [workshopId], references: [id])
-  learner    Learner  @relation(fields: [learnerId], references: [id])
-}
-
-model CompletedWorkshop {
-  id          Int      @id @default(autoincrement())
-  workshopId  Int
-  learnerId   Int
-  completedAt DateTime @default(now())
-  workshop    Workshop @relation(fields: [workshopId], references: [id])
-  learner     Learner  @relation(fields: [learnerId], references: [id])
-  payment     Payment? @relation(fields: [paymentId], references: [id]) // Link to the payment that allowed access to this workshop
-  paymentId   Int?
-
-  @@unique([workshopId, learnerId])
-}
-
-model Payment {
-  id                Int                 @id @default(autoincrement())
-  amount            Float
-  paymentDate       DateTime
-  learnerId         Int
-  workshopId        Int
-  learner           Learner             @relation(fields: [learnerId], references: [id])
-  workshop          Workshop            @relation(fields: [workshopId], references: [id])
-  CompletedWorkshop CompletedWorkshop[]
-
-  @@unique([learnerId, workshopId])
+model LearnerLedger {
+  id                   String   @id @default(cuid())
+  learnerEmail         String
+  workshopSecurityCode String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @default(now())
 }

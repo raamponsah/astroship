@@ -8,6 +8,8 @@ import TrainingDetails from "./../components/training-details.astro";
 import { ClerkLayout } from "astro-clerk-auth/components/control";
 import { getEntry } from "astro:content";
 
+import prisma from "../../../lib/prisma";
+
 export async function getStaticPaths() {
   const trainingEntries = await getCollection("training");
   return trainingEntries.map((entry) => ({
@@ -26,6 +28,10 @@ if (entry === undefined) {
 }
 const { Content } = await entry.render();
 
+const learner = await prisma.learnerLedger.findMany({})
+
+console.log("learner found for the learner page",learner);
+
 ---
 
 
@@ -38,6 +44,7 @@ const { Content } = await entry.render();
       <!-- Banner Image with Text Overlay -->
       <div class="relative rounded-lg overflow-hidden bg-white shadow-md mb-8">
         <img src={entry.data.image.src} alt={entry.data.title} class="w-full h-96 object-cover" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="31" height="14" viewBox="0 0 31 14" fill="none" class="z-[2] absolute m-5 top-0 right-1  dark:bg-gray-900 bg-gray-0 rounded-full"><rect width="31" height="14" x="0" y="0" fill="#26d97f" fill-opacity="0.1" rx="6.5"></rect><path fill="#26d97f" d="M11.433 4.182V10h-.937L7.754 6.037h-.048V10H6.652V4.182h.943l2.739 3.966h.05V4.182h1.05ZM12.582 10V4.182h3.784v.883h-2.73v1.58h2.534v.883h-2.534v1.588h2.753V10h-3.807Zm6.084 0-1.643-5.818h1.134l1.048 4.275h.054l1.12-4.275h1.03l1.123 4.278h.051l1.048-4.278h1.134L23.123 10h-1.04l-1.165-4.082h-.045L19.705 10h-1.04Z"></path></svg>
 
         <!-- Course Title, Teaser, and Instructor Overlay -->
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50">

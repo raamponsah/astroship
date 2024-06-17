@@ -22,7 +22,7 @@ if (entry === undefined) {
   return Astro.redirect("/404");
 }
 const { Content } = await entry.render();
-
+// export const prerender = true;
 ---
 
 <Layout title={entry.data.title}>

@@ -6,6 +6,7 @@ import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import TrainingCard from "@components/cards/TrainingCard.astro";
 import { ClerkLayout } from "astro-clerk-auth/components/control";
+import moment from "moment/moment";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedTrainingEntries = await getCollection("training", ({ data }) => {
@@ -22,7 +23,12 @@ publishedTrainingEntries.sort(function (a, b) {
 <Layout title="Training">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Training Workshops</Fragment>
+      <div slot="title" class="flex justify-center items-center">
+        <h1 class="relative">Training Workshops
+          <svg xmlns="http://www.w3.org/2000/svg" width="31" height="14" viewBox="0 0 31 14" fill="none" class="z-[2] absolute top-0 right-1 dark:bg-gray-900 bg-gray-0 rounded-full"><rect width="31" height="14" x="0" y="0" fill="#26d97f" fill-opacity="0.1" rx="6.5"></rect><path fill="#26d97f" d="M11.433 4.182V10h-.937L7.754 6.037h-.048V10H6.652V4.182h.943l2.739 3.966h.05V4.182h1.05ZM12.582 10V4.182h3.784v.883h-2.73v1.58h2.534v.883h-2.534v1.588h2.753V10h-3.807Zm6.084 0-1.643-5.818h1.134l1.048 4.275h.054l1.12-4.275h1.03l1.123 4.278h.051l1.048-4.278h1.134L23.123 10h-1.04l-1.165-4.082h-.045L19.705 10h-1.04Z"></path></svg>
+
+        </h1>
+      </div>
       <Fragment slot="desc">
         Empowering professionals with cutting-edge tech skills for a future-ready workforce.
       </Fragment>
@@ -32,12 +38,15 @@ publishedTrainingEntries.sort(function (a, b) {
         {
           publishedTrainingEntries.map((trainingEntry, index:number) => (
             <li>
-              <TrainingCard 
-                status={trainingEntry.data.status} 
-                title={trainingEntry.data.title} 
-                date={trainingEntry.data.publishDate} 
-                imageUrl={trainingEntry.data.image.src} 
+              <TrainingCard
+                status={trainingEntry.data.status}
+                title={trainingEntry.data.title}
+                date={trainingEntry.data.publishDate}
+                imageUrl={trainingEntry.data.image.src}
                 link={`/training/${trainingEntry.slug}`}
+                author={trainingEntry.data.author}
+                starting={moment(trainingEntry.data.workshopDetails.startDate).fromNow()}
+                price={`GHS${Math.floor(trainingEntry?.data?.actualPrice - (trainingEntry?.data?.actualPrice * trainingEntry?.data?.discount) / 100)} (${trainingEntry?.data?.discount}% off)`}
               />
             </li>
           ))

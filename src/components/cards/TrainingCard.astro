@@ -1,12 +1,20 @@
 ---
-// Props for the TrainingCard component
 import moment from "moment";
-const { title, description, imageUrl, date, author, category, link, status } = Astro.props;
+
+// Props for the TrainingCard component
+const { title, description, imageUrl, date, author, category, link, status, starting, price, discount } = Astro.props;
 ---
 
 <astro-fragment>
-  <div class="astro-card rounded-lg relative  shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[500px]">
-    <span class=`absolute p-1 top-0 z-10 right-0 m-4 rounded text-sm ${status  == 'Paid' ?'bg-amber-400':'bg-lime-500'}  text-white font-bold uppercase`>{status}</span>
+  <div class="astro-card rounded-lg relative shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[500px]">
+    <div class="flex justify-between items-center">
+      <span class={`absolute p-1 top-0 z-10 right-0 m-4 rounded text-sm ${status === 'Paid' ? 'bg-amber-400' : 'bg-lime-500'} text-white font-bold uppercase`}>
+        {status}
+      </span>
+      <span class="absolute backdrop-blur-lg p-1 top-0 z-10 left-0 m-4 rounded text-sm text-white font-bold uppercase">
+        STARTS {moment(starting).fromNow()}
+      </span>
+    </div>
     <a href={link} class="astro-card__link block relative">
       <div class="astro-card__image relative">
         <img class="w-full h-72 object-cover object-center rounded-t-lg" src={imageUrl} alt={title} />
@@ -17,11 +25,24 @@ const { title, description, imageUrl, date, author, category, link, status } = A
             <h2 class="astro-card__title text-xl font-medium leading-tight mt-2">{title}</h2>
             <div class="astro-card__meta flex items-center gap-3 mt-3">
               <span class="astro-card__author text-sm">{author}</span>
-              <!-- <span class="astro-card__date text-sm">{moment(date).calendar()}</span> -->
+              <span class="astro-card__date text-sm">
+                {/* {moment(date).calendar()} */}
+              </span>
             </div>
-            <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs  rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300">
-              Learn More
-            </button>
+            <div class="flex justify-between mt-4 items-center">
+              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300">
+                Learn More
+              </button>
+              {discount && (
+                <div class="flex items-center">
+                  <span class="text-white text-lg font-bold mr-2">{price}</span>
+                  <span class="text-xs bg-amber-400 text-white px-2 py-1 rounded-full uppercase font-semibold">{discount}% off</span>
+                </div>
+              )}
+              {!discount && (
+                <span class="text-white text-lg font-bold">{price}</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -30,37 +51,37 @@ const { title, description, imageUrl, date, author, category, link, status } = A
 </astro-fragment>
 
 <style>
-  .astro-card {
-    background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 0 auto;
-  }
+    .astro-card {
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
 
-  .astro-card__image {
-    position: relative;
-  }
+    .astro-card__image {
+        position: relative;
+    }
 
-  .astro-card__content {
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
-    padding: 1.5rem;
-  }
+    .astro-card__content {
+        background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+        padding: 1.5rem;
+    }
 
-  .astro-card__category {
-    color: #4299e1;
-  }
+    .astro-card__category {
+        color: #4299e1;
+    }
 
-  .astro-card__title {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
+    .astro-card__title {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-  .astro-card__meta {
-    font-size: 0.875rem;
-    color: #e5e7eb;
-  }
+    .astro-card__meta {
+        font-size: 0.875rem;
+        color: #e5e7eb;
+    }
 
-  .astro-card__button {
-    font-size: 0.875rem;
-    padding: 0.75rem 1.5rem;
-  }
+    .astro-card__button {
+        font-size: 0.875rem;
+        padding: 0.75rem 1.5rem;
+    }
 </style>

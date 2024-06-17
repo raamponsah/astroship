@@ -19,7 +19,6 @@ export interface Props {
   title: string;
 }
 
-const {data,error} = await supabase.auth.getSession()
 ---
 
 <ClerkLayout>
@@ -45,12 +44,13 @@ const {data,error} = await supabase.auth.getSession()
 <body class="bg-gray-100">
   <div class="flex flex-col md:flex-row">
     <!-- Sidebar -->
-    <aside class="sidebar bg-indigo-600 text-white w-full md:w-1/5 lg:w-1/6 p-4">
+    <aside class="sidebar bg-indigo-700 dark:bg-slate-900/90 text-white w-full md:w-1/5 lg:w-1/6 p-4">
    <div class="space-y-1 mb-4">
     <div>
       <a href="/" class="text-xs uppercase font-bold">
         <span class="font-bold text-blue-500">Sky</span
         ><span class="text-blue-200">fusion</span>
+
       </a>
       <h3 class="text-xl -mt-2">Workshop Console</h3>
     </div>
@@ -72,9 +72,9 @@ const {data,error} = await supabase.auth.getSession()
     </aside>
 
     <!-- Content -->
-    <main class="content flex-1 bg-white p-8">
+    <main class="content flex-1 dark:bg-black/90 p-8">
       <header class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-semibold">Welcome Back, {auth().sessionClaims?.firstName}</h2>
+        <h2 class="text-lg px-32 font-semibold max-w-6xl dark:text-slate-300">Welcome Back, {auth().sessionClaims?.firstName}</h2>
 
         <div class="hidden lg:flex items-center gap-4">
           {auth && auth().userId ? (  // Check if user is authenticated
