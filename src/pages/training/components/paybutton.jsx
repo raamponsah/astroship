@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PaystackButton } from "react-paystack";
-import { supabase } from '../../../lib/supabase';
+import { supabase } from '../../../lib/supabase.js';
 
 const PaystackCheckout = React.memo(({ amount, email }) => {
   const publicKey = "pk_test_27857813fd279a181392262255e5625370126f03";

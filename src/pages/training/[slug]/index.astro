@@ -7,9 +7,6 @@ import PriceTag from "./../components/price-tag.astro";
 import TrainingDetails from "./../components/training-details.astro";
 import { ClerkLayout } from "astro-clerk-auth/components/control";
 import { getEntry } from "astro:content";
-
-import prisma from "../../../lib/prisma";
-
 export async function getStaticPaths() {
   const trainingEntries = await getCollection("training");
   return trainingEntries.map((entry) => ({
@@ -27,10 +24,6 @@ if (entry === undefined) {
   return Astro.redirect("/404");
 }
 const { Content } = await entry.render();
-
-const learner = await prisma.learnerLedger.findMany({})
-
-console.log("learner found for the learner page",learner);
 
 ---
 
