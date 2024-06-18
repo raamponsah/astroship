@@ -6,7 +6,6 @@ import moment from "moment";
 import TrainingDetails from "./../components/training-details.astro";
 import PaymentForm from "../components/payment-form";
 import {getEntry} from "astro:content";
-import { ClerkLayout } from "astro-clerk-auth/components/control";
 
 export async function getStaticPaths() {
   const trainingEntries = await getCollection("training");
