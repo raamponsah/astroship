@@ -4,8 +4,7 @@ import moment from "moment";
 // Props for the TrainingCard component
 const { title, description, imageUrl, date, author, category, link, status, starting, price, discount } = Astro.props;
 ---
-
-<astro-fragment>
+<div>
   <div class="astro-card rounded-lg relative shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[500px]">
     <div class="flex justify-between items-center">
       <span class={`absolute p-1 top-0 z-10 right-0 m-4 rounded text-sm ${status === 'Paid' ? 'bg-amber-400' : 'bg-lime-500'} text-white font-bold uppercase`}>
@@ -26,20 +25,19 @@ const { title, description, imageUrl, date, author, category, link, status, star
             <div class="astro-card__meta flex items-center gap-3 mt-3">
               <span class="astro-card__author text-sm">{author}</span>
               <span class="astro-card__date text-sm">
-                {/* {moment(date).calendar()} */}
+                {moment(date).calendar()}
               </span>
             </div>
             <div class="flex justify-between mt-4 items-center">
               <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300">
                 Learn More
               </button>
-              {discount && (
+              {discount ? (
                 <div class="flex items-center">
                   <span class="text-white text-lg font-bold mr-2">{price}</span>
                   <span class="text-xs bg-amber-400 text-white px-2 py-1 rounded-full uppercase font-semibold">{discount}% off</span>
                 </div>
-              )}
-              {!discount && (
+              ) : (
                 <span class="text-white text-lg font-bold">{price}</span>
               )}
             </div>
@@ -48,7 +46,7 @@ const { title, description, imageUrl, date, author, category, link, status, star
       </div>
     </a>
   </div>
-</astro-fragment>
+</div>
 
 <style>
     .astro-card {
