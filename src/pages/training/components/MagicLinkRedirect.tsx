@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { supabase } from '../../../lib/supabase.ts';
+import { supabase } from '@lib/supabase';
 
 export default function MagicLinkRedirect() {
   useEffect(() => {
