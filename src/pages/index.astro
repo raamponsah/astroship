@@ -2,13 +2,11 @@
 import { getCollection } from "astro:content";
 
 import Container from "@components/container.astro";
-import Cta from "@components/cta.astro";
 import Features from "@components/features.astro";
 import Hero from "@components/hero.astro";
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
 import TrainingCard from "@components/cards/TrainingCard.astro";
-import { ClerkLayout } from "astro-clerk-auth/components/control";
 
 import moment from "moment";
 
@@ -28,8 +26,8 @@ const latestTrainingEntries = publishedTrainingEntries
         Trending Workshops
       </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
-        {latestTrainingEntries.map((trainingEntry, index) => (
-          <li key={index}>
+        {latestTrainingEntries.map((trainingEntry) => (
+          <li>
             <TrainingCard
               status={trainingEntry.data.status}
               title={trainingEntry.data.title}
@@ -49,6 +47,6 @@ const latestTrainingEntries = publishedTrainingEntries
 
     <Logos />
 
-    <Cta />
+
   </Container>
 </Layout>
