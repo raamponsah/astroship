@@ -1,7 +1,7 @@
 "use server";
 
 import PaystackPop from '@paystack/inline-js';
-import { supabase } from "lib/supabase.ts";
+import { supabase } from "@lib/supabase";
 
 const PaymentForm = ({ entry, email }) => {
   const price = Math.floor(entry?.data?.actualPrice - (entry?.data?.actualPrice * (entry?.data?.discount || 0)) / 100);
