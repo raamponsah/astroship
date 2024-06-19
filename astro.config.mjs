@@ -16,5 +16,7 @@ export default defineConfig({
     applyBaseStyles: false,
   }), mdx(), sitemap(), icon(), react(), clerk()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  })
 });
