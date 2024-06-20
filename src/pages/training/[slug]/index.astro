@@ -44,9 +44,13 @@ const { Content } = await entry.render();
           <h3 class="text-xl font-bold uppercase">{entry.data.numberOfDays}-Day Training Workshop</h3>
           <h1 class="text-3xl lg:text-4xl font-bold mb-2">{entry.data.title}</h1>
           <p class="text-lg lg:text-xl mb-2">{entry.data.teaser}</p>
-          <p class="text-xs lg:text-sm mb-2 px-4 py-1 shadow-lg border border-dashed border-white bg-slate-500 rounded-full">
+          <p class="text-xs lg:text-sm mb-2 px-4 py-1 shadow-lg border border-dashed border-white bg-indigo-700 rounded-full">
             Workshop training starts in {moment(entry?.data?.workshopDetails?.startDate).fromNow(true)}
           </p>
+         <div class="text-center flex flex-col justify-center items-center lg:absolute lg:block lg:right-0 lg:bottom-0 p-4">
+           <h6 class="text-xs text-right font-bold uppercase">Instructor</h6>
+            <a href=`${entry?.data?.authorLink}` target="_blank" class="underline">{entry?.data?.author}</a>
+         </div>
         </div>
       </div>
 
@@ -107,6 +111,7 @@ const { Content } = await entry.render();
         <!-- Instructor Bio -->
         <div class="lg:w-3/6">
           <!-- Instructor Details -->
+
         </div>
 
         <!-- Workshop Registration -->

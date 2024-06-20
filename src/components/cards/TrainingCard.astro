@@ -1,6 +1,4 @@
 ---
-import moment from "moment";
-
 // Props for the TrainingCard component
 const { title, description, imageUrl, date, author, category, link, status, starting, price, discount } = Astro.props;
 ---
@@ -11,7 +9,7 @@ const { title, description, imageUrl, date, author, category, link, status, star
         {status}
       </span>
       <span class="absolute backdrop-blur-lg p-1 top-0 z-10 left-0 m-4 rounded text-sm text-white font-bold uppercase">
-        STARTS {moment(starting).fromNow()}
+        STARTS {starting}
       </span>
     </div>
     <a href={link} class="astro-card__link block relative">
@@ -25,13 +23,14 @@ const { title, description, imageUrl, date, author, category, link, status, star
             <div class="astro-card__meta flex items-center gap-3 mt-3">
               <span class="astro-card__author text-sm">{author}</span>
               <span class="astro-card__date text-sm">
-                {moment(date).calendar()}
+                <!--{moment().calendar()}-->
               </span>
             </div>
             <div class="flex justify-between mt-4 items-center">
-              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300">
-                Learn More
+              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs md:text-sm lg:text-base xl:text-lg rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4">
+                Enroll
               </button>
+
               {discount ? (
                 <div class="flex items-center">
                   <span class="text-white text-lg font-bold mr-2">{price}</span>

@@ -34,7 +34,9 @@ const trainingCollection = defineCollection({
       alt: z.string(),
     }),
     publishDate: z.string().transform(str => new Date(str)),
-    author: z.string().default('Astroship'),
+    author: z.string().default('Skyfusion'),
+    authorLink:z.string().default(""),
+    deadline:z.string(),
     category: z.string(),
     tags: z.array(z.string()),
     status: z.enum(['Paid','Free']).default('Free'),
@@ -60,7 +62,7 @@ const trainingCollection = defineCollection({
         breakTime: z.string(),
         closingTime: z.string(),
         otherDetails: z.optional(z.string()),
-      
+
       }
     ),)
   }),

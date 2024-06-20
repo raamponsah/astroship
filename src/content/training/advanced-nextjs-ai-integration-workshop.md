@@ -1,64 +1,54 @@
 ---
 draft: false
-title: "Advanced Web Development with Next.js and AI Integration"
-teaser: "Explore advanced web development using Next.js and integrate AI capabilities"
-snippet: "Enhance your web development skills with Next.js and learn to integrate AI technologies for intelligent web applications."
-workshopSecurityCode: "Y5R2T9W6Z0A3"
-description: |
-  Dive deep into the intersection of web development and artificial intelligence with this advanced workshop. You will learn how to leverage Next.js for building robust server-rendered applications and integrate AI capabilities to create intelligent and dynamic web experiences.
-
-  Topics covered include:
-  - Setting up a Next.js development environment
-  - Advanced routing and data fetching with Next.js
-  - Integrating AI APIs and libraries (such as TensorFlow.js or OpenAI's GPT) with Next.js
-  - Implementing AI-driven features like natural language processing or image recognition
-  - Deployment strategies for AI-integrated Next.js applications
-
-duration: 40
-image:
-  src: "https://images.pexels.com/photos/17483809/pexels-photo-17483809/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-ai-accountability-is-a-strong-foundation-in-a-world-of-unpredictability-it-was-created-by-champ-panupon.png?auto=compress&cs=tinysrgb&w=600"
-  alt: "Next.js and AI Workshop"
-publishDate: "2024-06-15"
-author: "ChatGPT"
-workshopDetails:
-  location: "Online"
-  startDate: "2024-09-20"
-  endDate: "2024-09-24"
-  startTime: "10:00"
-  endTime: "15:00"
-  otherDetails: "Certificate of completion provided | Hands-on projects included"
-  breakTime: "12:30"
-  closingTime: "16:00"
-  deadlineRegistration: "2024-09-10"
-actualPrice: 1299
-discount: 15.5
-capstoneProjects: 2
-
-category: "Web Development"
-tags:
-  - Next.js
-  - Artificial Intelligence
-  - Machine Learning
-status: "Paid"
-content:
-  - title: "Setting Up Your Next.js Environment"
-    description: "Learn how to set up a development environment for building Next.js applications."
-  - title: "Advanced Routing and Data Fetching"
-    description: "Explore advanced routing techniques and efficient data fetching strategies in Next.js."
-  - title: "Integrating AI APIs"
-    description: "Learn how to integrate AI APIs and libraries into Next.js applications for enhanced functionality."
-  - title: "Implementing AI-Driven Features"
-    description: "Implement AI-driven features such as natural language processing or image recognition in your Next.js projects."
-  - title: "Deployment Strategies"
-    description: "Discover best practices for deploying Next.js applications that include AI functionalities."
-instructorBio: "Jane Smith is a web developer and AI enthusiast with extensive experience in building advanced web applications. She specializes in integrating AI technologies into web projects to enhance user experiences."
-instructorImage: "/jane-smith.jpg"
-learn:
-  - "Master Next.js for server-rendered web applications"
-  - "Integrate AI capabilities to create intelligent web features"
-requirements:
-  - "Intermediate knowledge of JavaScript and React"
-  - "Familiarity with Next.js is recommended but not required"
+title: "Master Fullstack Web Development with Next.js: Intensive 5-Day Bootcamp"
+teaser: "Transform into a fullstack web developer with expert-led training on Next.js, React, Prisma, and Tailwind CSS."
+snippet: "Master the art of building scalable and robust web applications from scratch in just 5 days."
+description: "Join our Ultimate Fullstack Web Development Bootcamp and elevate your coding skills to the next level. This intensive workshop delves deep into the fullstack development process using Next.js, React, Prisma, and Tailwind CSS. From environment setup to deployment, gain hands-on experience and a comprehensive understanding of modern web application development. With two capstone projects, you'll apply your learning to real-world scenarios, ensuring you're ready to tackle any challenge. Enjoy daily breakfast and lunch while you learn!"
 numberOfDays: 5
-
+duration: 240
+image: 
+  src: "https://images.pexels.com/photos/13026926/pexels-photo-13026926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  alt: "Fullstack Web Development Bootcamp"
+publishDate: "2024-07-01T00:00:00.000Z"
+author: "Raphael Amponsah"
+deadline: "2024-07-14T00:00:00.000Z"
+category: "Web Development"
+tags: ["Next.js", "Fullstack", "JavaScript", "React", "Prisma", "Tailwind CSS"]
+status: "Paid"
+content: 
+  - title: "Day 1: Introduction and Setup"
+    description: "Kickstart your journey by setting up your development environment and creating your first Next.js application. Gain a solid understanding of the fundamentals of React and Next.js."
+  - title: "Day 2: Building the Frontend"
+    description: "Learn how to build a responsive and interactive frontend using Next.js and Tailwind CSS. Dive into component-based architecture and efficient state management."
+  - title: "Day 3: Integrating the Backend"
+    description: "Seamlessly integrate your frontend with a backend using Next.js API routes and Prisma for robust database management. Implement secure authentication mechanisms."
+  - title: "Day 4: Advanced Features and Capstone Project 1"
+    description: "Explore advanced Next.js features such as server-side rendering (SSR) and static site generation (SSG). Begin working on your first capstone project to apply your newly acquired skills."
+  - title: "Day 5: Optimization, Deployment, and Capstone Project 2"
+    description: "Optimize your application for peak performance and scalability. Deploy your Next.js application to production and complete your second capstone project. Receive personalized feedback and guidance."
+workshopSecurityCode: "NEXTJS12345"
+capstoneProjects: 2
+actualPrice: 1450
+discount: 13.5
+instructorBio: "Raphael Amponsah is a seasoned web expert with extensive experience in fullstack development. Specializing in React and Next.js, Raphael is passionate about teaching and helping others excel in web development."
+instructorImage: "/images/raphael-amponsah.jpg"
+learn:
+  - "Set up a fullstack Next.js development environment"
+  - "Create and manage dynamic pages and components"
+  - "Implement server-side rendering and static site generation"
+  - "Integrate with backend APIs and manage databases with Prisma"
+  - "Deploy Next.js applications to production"
+  - "Build and secure authentication systems"
+requirements:
+  - "Basic understanding of HTML, CSS, and JavaScript"
+  - "Laptop with internet connection"
+  - "Node.js installed"
+workshopDetails: 
+  startDate: "2024-07-18"
+  endDate: "2024-07-22"
+  location: "GIMPA Campus"
+  startTime: "09:00 AM"
+  breakTime: "12:00 PM"
+  closingTime: "04:00 PM"
+  otherDetails: "Bring your own laptop and prepare for an intensive, hands-on learning experience. Breakfast, lunch, and refreshments will be provided."
 ---

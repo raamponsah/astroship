@@ -35,7 +35,7 @@ const latestTrainingEntries = publishedTrainingEntries
               imageUrl={trainingEntry.data.image.src}
               link={`/training/${trainingEntry.slug}`}
               author={trainingEntry.data.author}
-              starting={moment(trainingEntry.data.workshopDetails.startDate).fromNow()}
+              starting={moment(trainingEntry?.data?.workshopDetails?.startDate).fromNow()}
               price={`GHS${Math.floor(trainingEntry?.data?.actualPrice - (trainingEntry?.data?.actualPrice * trainingEntry?.data?.discount) / 100)} (${trainingEntry?.data?.discount}% off)`}
             />
           </li>

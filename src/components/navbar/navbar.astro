@@ -21,22 +21,22 @@ const menuitems = [
   <Astronav>
     <div class="flex items-center justify-between w-full lg:w-auto">
       <a href="/" class="w-48 lg:w-auto">
-        <img src="/LOGO-SKYFUSION.png" class="lg:w-2/6" />
+        <img src="/LOGO-SKYFUSION.png" alt="Skyfusion Official Logo" class="lg:w-2/6" />
       </a>
       <div class="block lg:hidden">
         <MenuIcon class="w-6 h-6 text-gray-800" />
       </div>
     </div>
-    <MenuItems class="hidden lg:flex lg:flex-grow items-center justify-center lg:justify-end mt-2 lg:mt-0">
+    <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
       <ul class="flex flex-col lg:flex-row lg:gap-5">
-        {menuitems.map((item, index) => (
-          <li key={index}>
+        {menuitems.map((item:any) => (
+          <li>
             <a
               href={item.path}
               class="flex lg:px-3 py-2 items-center text-lg text-gray-600 hover:text-gray-900"
             >
               <span>{item.title}</span>
-              {item.badge && (
+              {item?.badge && (
                 <span class="ml-1 px-2 py-0.5 text-xs animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
                   New
                 </span>
@@ -47,11 +47,16 @@ const menuitems = [
       </ul>
       <div class="lg:flex items-center gap-4 mt-4 lg:mt-0">
         {auth && auth().userId ? (
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <>
+            <a href="/dashboard" class="group relative inline-flex items-center justify-center overflow-hidden text-sm font-medium transition duration-300 ease-in-out rounded-md px-3 py-1 shadow-sm bg-gradient-to-b from-white/20 to-transparent opacity-70 hover:opacity-100 ring-1 ring-indigo-500 bg-indigo-500 text-white">
+              Dashboard
+            </a>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </>
         ) : (
-          <a href="/sign-in" class="bg-indigo-500 px-4 py-2 text-white rounded-xl inline-block">Sign In</a>
+          <a href="/sign-in" class="bg-indigo-500 px-5 py-2 text-white rounded-full inline-block">Sign In</a>
         )}
       </div>
     </MenuItems>

@@ -1,7 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from "astro-clerk-auth/server";
 
 // Only protect /user routes
-const isProtectedPage = createRouteMatcher(['/user(.*)']);
+const isProtectedPage = createRouteMatcher(['/user(.*)','/dashboard(.*)']);
 
 // Mark /training routes as public
 const isPublicRoute = createRouteMatcher(['/training(.*)']);
