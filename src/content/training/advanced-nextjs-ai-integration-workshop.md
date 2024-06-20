@@ -45,8 +45,8 @@ requirements:
   - "Laptop with internet connection"
   - "Node.js installed"
 workshopDetails: 
-  startDate: "2024-07-18"
-  endDate: "2024-07-22"
+  startDate: "2024-07-15"
+  endDate: "2024-07-20"
   location: "GIMPA Campus"
   startTime: "09:00 AM"
   breakTime: "12:00 PM"
