@@ -13,6 +13,8 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 // export const prerender = true;
 ---
 
+// Assuming 'Fragment' is imported properly from React or another library
+
 <Layout title="About">
   <Container>
     <Sectionhead>
@@ -20,8 +22,8 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
       <Fragment slot="desc">We are a small passionate and innovative team.</Fragment>
     </Sectionhead>
 
-    <div class="flex px-40 flex-row-reverse">
-      <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16 pr-10">
+    <div class="grid grid-cols-1 justify-center items-center lg:grid-cols-2 gap-12 px-4 lg:px-40 mt-12">
+      <div class="flex flex-col gap-6">
         <h2 class="font-bold text-3xl text-gray-800">
           Empowering Through Innovation
         </h2>
@@ -31,8 +33,6 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
           BN723620823), we specialize in demystifying complex technological concepts through hands-on learning
           experiences. Our workshops cater to a diverse audience, including corporate teams, individuals seeking career
           advancement, and students eager to bridge the gap between theory and application.
-
-
         </p>
 
         <p class="text-lg leading-relaxed text-slate-500">
@@ -51,32 +51,31 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
           in the ever-evolving tech landscape.
         </p>
       </div>
-      <div class="grid  mx-auto max-w-4xl mt-12">
-        {
-          publishedTeamMembers.map((teamMemberEntry) => (
-            <div class="group">
-              <div class="w-full">
-                <Picture
-                  src={teamMemberEntry.data.avatar.src}
-                  alt={teamMemberEntry.data.avatar.alt}
-                  sizes="(max-width: 800px) 100vw, 400px"
-                  width={500}
-                  height={500}
-                  class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center"
-                />
-              </div>
 
-              {/* <div class="mt-4 text-center">
-            <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-            <h3 class="text-sm text-slate-500">
-              {teamMemberEntry.data.title}
-            </h3>
-          </div> */}
-            </div>
-          ))
-        }
+      <div class="grid gap-6 ">
+        <img src="/aiding-coding.jpg" alt="Raphael Amponsah helping a student to code" title="Raphael Amponsah helping a student to code" class="w-4/6 rounded">
+        <!--{-->
+        <!--  publishedTeamMembers.map((teamMemberEntry) => (-->
+        <!--    <div key={teamMemberEntry.id} class="group w-full">-->
+        <!--      <Picture-->
+        <!--        src={teamMemberEntry.data.avatar.src}-->
+        <!--        alt={teamMemberEntry.data.avatar.alt}-->
+        <!--        sizes="(min-width: 1000px) 400vw, 400px"-->
+        <!--        width={800}-->
+        <!--        height={800}-->
+        <!--        class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center"-->
+        <!--      />-->
+        <!--      {/* Uncomment below to display name and title */}-->
+        <!--      {/* <div class="mt-4 text-center">-->
+        <!--        <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>-->
+        <!--        <h3 class="text-sm text-slate-500">{teamMemberEntry.data.title}</h3>-->
+        <!--      </div> */}-->
+        <!--    </div>-->
+        <!--  ))-->
+        <!--}-->
       </div>
     </div>
     <Cta />
   </Container>
 </Layout>
+
