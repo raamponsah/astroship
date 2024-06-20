@@ -61,6 +61,7 @@ const trainingCollection = defineCollection({
         startTime: z.string(),
         breakTime: z.string(),
         closingTime: z.string(),
+        targetedAudience:z.string().default("General Audience"),
         otherDetails: z.optional(z.string()),
 
       }

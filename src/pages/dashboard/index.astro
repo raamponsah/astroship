@@ -10,12 +10,12 @@ const learnerLedgerResponse = await supabase
   .select()
   .eq('email', auth().sessionClaims?.email);
 
-const learnerLedger = learnerLedgerResponse.data;
+const learnerLedger = learnerLedgerResponse.data || [];
 
 const { data, error } = await supabase
   .storage
   .from('mbukit')  // Replace with your bucket name
-  .list();
+  .list() || [];
 
 if (error) {
   console.error('Error fetching workshop files:', error);
@@ -25,7 +25,7 @@ if (error) {
 }
 
 const markedRemoteFileLinks = data.map((f) => `https://gvcpyhkcnsqchooabnez.supabase.co/storage/v1/object/public/mbukit/${f.name}`);
-const fileUrls = markedRemoteFileLinks;
+const fileUrls = markedRemoteFileLinks || [];
 
 let parsedFiles = [];
 
@@ -43,13 +43,13 @@ if (fileUrls.length > 0) {
 }
 
 
-const flattenedResults = parsedFiles.flat();
+const flattenedResults = parsedFiles.flat() || [];
 
 const filteredResults = flattenedResults.filter((x:any) => {
   return learnerLedger.some((y:any) => {
-    return y.workshop_code === x.frontmatter.workshopSecurityCode;
+    return y?.workshop_code === x?.frontmatter?.workshopSecurityCode;
   });
-});
+}) || [];
 
 ---
 
@@ -64,11 +64,11 @@ const filteredResults = flattenedResults.filter((x:any) => {
         </div>
         <div class="bg-indigo-100 p-4 rounded text-indigo-800">
           <h3 class="text-lg font-medium">Completed Workshops</h3>
-          <p class="text-2xl font-bold">8</p>
+          <p class="text-2xl font-bold">0</p>
         </div>
         <div class="bg-indigo-100 p-4 rounded text-indigo-800">
           <h3 class="text-lg font-medium">Upcoming Workshops</h3>
-          <p class="text-2xl font-bold">4</p>
+          <p class="text-2xl font-bold">2</p>
         </div>
       </section>
          <!-- List of Workshops regsitered -->
@@ -78,7 +78,7 @@ const filteredResults = flattenedResults.filter((x:any) => {
         <h3 class="text-xl font-semibold mb-4">Registered Workshops</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {
-            filteredResults.length > 0? filteredResults?.map((workshop) => (
+            filteredResults?.length > 0? filteredResults?.map((workshop) => (
               <div class="bg-white border border-indigo-200 p-4 rounded shadow hover:shadow-lg transition-shadow">
                 <h4 class="text-lg font-semibold mb-2">{workshop?.frontmatter?.title}</h4>
                 <p class="text-gray-600 mb-4">{workshop?.frontmatter?.teaser!}</p>

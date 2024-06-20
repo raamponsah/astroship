@@ -1,19 +1,19 @@
 ---
 import '@fontsource/poppins';
-import { ClerkLayout, SignedIn, SignedOut } from "astro-clerk-auth/components/control";
-import { SignedIn, SignedOut } from "astro-clerk-auth/components/control";
-import { UserButton, SignIn } from "astro-clerk-auth/components/interactive";
+import { ClerkLayout, SignedIn } from "astro-clerk-auth/components/control";
+import { SignedIn } from "astro-clerk-auth/components/control";
+import { UserButton } from "astro-clerk-auth/components/interactive";
 
+import '@fontsource-variable/work-sans';
+import '@fontsource-variable/manrope';
+import '../../app/globals.css';
+import { UserButton } from "astro-clerk-auth/components/interactive";
 
 
 
 const { auth } =  Astro.locals;
 
 
-import '@fontsource-variable/work-sans';
-import '@fontsource-variable/manrope';
-import '../../app/globals.css';
-import { UserButton } from "astro-clerk-auth/components/interactive";
 export interface Props {
   title: string;
 }
@@ -21,49 +21,48 @@ export interface Props {
 ---
 
 <ClerkLayout>
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Workshop Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    .sidebar {
-      min-height: 100vh;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyfusion: User Workshop Dashboard</title>
+    <style>
+        .sidebar {
+            min-height: 100vh;
+        }
 
-    .content {
-      min-height: 100vh;
-    }
-  </style>
-</head>
+        .content {
+            min-height: 100vh;
+        }
+    </style>
+  </head>
 
-<body class="bg-gray-100">
+  <body class="bg-gray-100">
   <div class="flex flex-col md:flex-row">
     <!-- Sidebar -->
-    <aside class="sidebar bg-indigo-700 dark:bg-slate-900/90 text-white w-full md:w-1/5 lg:w-1/6 p-4">
-   <div class="space-y-1 mb-4">
-    <div>
-      <a href="/" class="text-xs uppercase font-bold">
+    <aside class="sidebar bg-indigo-900 dark:bg-slate-900/90 text-white w-full md:w-1/5 lg:w-1/6 p-4">
+      <div class="space-y-1 mb-4">
+        <div>
+          <a href="/" class="text-xs uppercase font-bold">
         <span class="font-bold text-blue-500">Sky</span
         ><span class="text-blue-200">fusion</span>
 
-      </a>
-      <h3 class="text-xl -mt-2">Workshop Console</h3>
-    </div>
-     <hr class="border-0 h-1 bg-gradient-to-r from-purple-600 via-sky-500 to-indigo-600 my-4">
-   </div>
+          </a>
+          <h3 class="text-xl -mt-2">Workshop Console</h3>
+        </div>
+        <hr class="border-0 h-1 bg-gradient-to-r from-purple-600 via-sky-500 to-indigo-600 my-4">
+      </div>
       <nav>
         <ul>
           <li class="mb-2">
-            <a href="/dashboard" class="block p-2 rounded hover:bg-indigo-500">Dashboard</a>
+            <a href="/" class="block p-2 rounded hover:bg-indigo-500">Home</a>
           </li>
           <li class="mb-2">
-            <a href="/dashboard/my-workshops" class="block p-2 rounded hover:bg-indigo-500">My Workshops</a>
+            <a href="/dashboard/" class="block p-2 rounded hover:bg-indigo-500">My Workshops</a>
           </li>
-    
+
 
 
         </ul>
@@ -71,11 +70,11 @@ export interface Props {
     </aside>
 
     <!-- Content -->
-    <main class="content flex-1 dark:bg-black/90 p-8">
-      <header class="flex justify-between items-center mb-6">
-        <h2 class="text-lg px-32 font-semibold max-w-6xl dark:text-slate-300">Welcome Back, {auth().sessionClaims?.firstName}</h2>
+    <main class="content flex-1 dark:bg-black/90 p-8 relative">
+      <header class="flex justify-between items-center mb-12">
+        <!--<h2 class=" px-32 font-semibold  text-sm dark:text-slate-300">Welcome Back, {auth().sessionClaims?.firstName}</h2>-->
 
-        <div class="hidden lg:flex items-center gap-4">
+        <div class="hidden lg:flex items-center gap-4 absolute top-0 right-0 p-6 mb-5">
           {auth && auth().userId ? (  // Check if user is authenticated
    <a href="/dashboard"  class="group relative inline-flex items-center justify-center overflow-hidden text-sm font-medium transition duration-300 ease-in-out rounded-md px-3 py-1 shadow-sm bg-gradient-to-b from-white/20 to-transparent opacity-70 hover:opacity-100 ring-1 ring-green-600 bg-green-600 text-white">
               Register for New Workshop
@@ -92,11 +91,11 @@ export interface Props {
 
 
 
- <slot/>
+      <slot/>
     </main>
   </div>
-</body>
+  </body>
 
-</html>
+  </html>
 
 </ClerkLayout>

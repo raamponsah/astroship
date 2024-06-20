@@ -16,7 +16,7 @@ const PaymentForm = ({ entry, email }) => {
 
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: 'pk_test_27857813fd279a181392262255e5625370126f03',
+      key: 'pk_live_5cc4fb269f5e4916a0da31e31476122aa25c0318',
       email: email,
       amount: price * 100, // Convert to kobo if the price is in Naira
       metadata: {
@@ -129,7 +129,9 @@ const PaymentForm = ({ entry, email }) => {
             Pay
           </button>
         </div>
-        <small className="text-purple-800 text-xs">Payment will be processed with Paystack</small>
+        <small className="text-purple-800 underline text-xs">
+          <a href="/toc" target="_blank">By paying you agree to our terms and conditions</a>
+        </small>
       </form>
     </div>
   );
