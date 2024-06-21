@@ -11,7 +11,7 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://skyfusion.dev",
   integrations: [tailwind({
     applyBaseStyles: false,
   }), mdx(), sitemap(), icon(), react(), clerk()],
