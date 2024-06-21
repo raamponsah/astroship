@@ -4,7 +4,6 @@ import '@fontsource-variable/work-sans';
 import '@fontsource-variable/manrope';
 import '../../app/globals.css';
 
-
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +14,13 @@ import '../../app/globals.css';
   <title>Terms and Conditions - Skyfusion</title>
   <style>
       body {
-          font-family: Arial, sans-serif;
+          font-family: 'Poppins', sans-serif;
           line-height: 1.6;
           margin: 20px;
           max-width: 800px;
           margin-left: auto;
           margin-right: auto;
+          color: white;
       }
 
       h1 {
@@ -38,12 +38,45 @@ import '../../app/globals.css';
       p {
           margin-bottom: 16px;
       }
+
+      @media (max-width: 768px) {
+          body {
+              margin: 10px;
+          }
+
+          h1 {
+              font-size: 22px;
+          }
+
+          h2 {
+              font-size: 18px;
+          }
+      }
+
+      @media (max-width: 480px) {
+          h1 {
+              font-size: 20px;
+          }
+
+          h2 {
+              font-size: 16px;
+          }
+
+          p {
+              font-size: 14px;
+          }
+
+          .logo {
+              width: 80%;
+              margin-left: 0;
+          }
+      }
   </style>
 </head>
 
 <body class="bg-gradient-to-bl from-indigo-900 to-indigo-700 text-white">
 <header>
-  <img src="/skyfusion-logo-W.png" alt="SKYFUSION LOGO" class="-ml-4 w-3/6"/>
+  <img src="/skyfusion-logo-W.png" alt="SKYFUSION LOGO" class="logo -ml-4 w-3/6"/>
   <h1 class="font-bold">Terms and Conditions</h1>
   <p>Welcome to Skyfusion! These terms and conditions outline the rules and regulations for the use of Skyfusion's website and services.</p>
 </header>
@@ -80,7 +113,9 @@ import '../../app/globals.css';
 
 <section>
   <h2>Contact Us</h2>
-  <p>If you have any questions or concerns about these terms and conditions, please contact us at admin@skyfusion.dev or whatsapp +233206171719.</p>
+  <p>If you have any questions or concerns about these terms and conditions, please contact us at:</p>
+  <p><strong>Email:</strong> admin@skyfusion.dev</p>
+  <p><strong>WhatsApp:</strong> +233206171719</p>
 </section>
 </body>
 
