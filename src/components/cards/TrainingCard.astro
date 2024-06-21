@@ -1,6 +1,6 @@
 ---
 // Props for the TrainingCard component
-const { title, description, imageUrl, date, author, category, link, status, starting, price, discount } = Astro.props;
+const { title, description, imageUrl, date, author, category, link, status, starting, price, discount, modeOfWorkshop } = Astro.props;
 ---
 <div>
   <div class="astro-card rounded-lg relative shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[500px]">
@@ -21,23 +21,25 @@ const { title, description, imageUrl, date, author, category, link, status, star
             <span class="astro-card__category text-sm font-medium uppercase tracking-wider">{category}</span>
             <h2 class="astro-card__title text-xl font-medium leading-tight mt-2">{title}</h2>
             <div class="astro-card__meta flex items-center gap-3 mt-3">
-              <span class="astro-card__author text-sm">{author}</span>
+              <span class="">
+                {modeOfWorkshop}
+              </span>
               <span class="astro-card__date text-sm">
                 <!--{moment().calendar()}-->
               </span>
             </div>
             <div class="flex justify-between mt-4 items-center">
-              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs md:text-sm lg:text-base xl:text-lg rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4">
+              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs md:text-sm lg:text-base xl:text-lg rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300 px-2 py-1 md:px-6 md:py-2 lg:px-2 lg:py-2">
                 Enroll
               </button>
 
               {discount ? (
                 <div class="flex items-center">
                   <span class="text-white text-lg font-bold mr-2">{price}</span>
-                  <span class="text-xs bg-amber-400 text-white px-2 py-1 rounded-full uppercase font-semibold">{discount}% off</span>
+                  <span class="text-xs bg-amber-400 text-white px-1 py-1 rounded-full uppercase font-semibold">{discount}% off</span>
                 </div>
               ) : (
-                <span class="text-white text-lg font-bold">{price}</span>
+                <span class="text-white text-lg md:text-lg font-bold">{price}</span>
               )}
             </div>
           </div>

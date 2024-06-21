@@ -5,7 +5,6 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import TrainingCard from "@components/cards/TrainingCard.astro";
-import { ClerkLayout } from "astro-clerk-auth/components/control";
 import moment from "moment/moment";
 
 // Filter blog entries with 'draft: false' & date before current date
@@ -36,7 +35,7 @@ publishedTrainingEntries.sort(function (a, b) {
     <main class="mt-8 mb-16">
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
         {
-          publishedTrainingEntries.map((trainingEntry, index:number) => (
+          publishedTrainingEntries.map((trainingEntry) => (
             <li>
               <TrainingCard
                 status={trainingEntry.data.status}
@@ -44,6 +43,7 @@ publishedTrainingEntries.sort(function (a, b) {
                 date={trainingEntry.data.publishDate}
                 imageUrl={trainingEntry.data.image.src}
                 link={`/training/${trainingEntry.slug}`}
+                modeOfWorkshop={trainingEntry.data.workshopDetails.modeOfWorkshop}
                 author={trainingEntry.data.author}
                 starting={moment(trainingEntry.data.workshopDetails.startDate).fromNow()}
                 price={`GHS${Math.floor(trainingEntry?.data?.actualPrice - (trainingEntry?.data?.actualPrice * trainingEntry?.data?.discount) / 100)} (${trainingEntry?.data?.discount}% off)`}

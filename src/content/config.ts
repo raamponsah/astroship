@@ -63,7 +63,7 @@ const trainingCollection = defineCollection({
         closingTime: z.string(),
         targetedAudience:z.string().default("General Audience"),
         otherDetails: z.optional(z.string()),
-
+        modeOfWorkshop:z.string().default("In-Person and Virtual")
       }
     ),)
   }),

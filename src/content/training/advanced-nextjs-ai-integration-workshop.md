@@ -51,6 +51,7 @@ workshopDetails:
   startTime: "09:00 AM"
   breakTime: "12:00 PM"
   closingTime: "04:00 PM"
+  mode: "Virtual and In-Person"
   targetedAudience: "Aspiring fullstack developers, frontend and backend developers looking to upskill"
   otherDetails: "Bring your own laptop and prepare for an intensive, hands-on learning experience. Breakfast, lunch, and refreshments will be provided."
 ---
