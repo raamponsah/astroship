@@ -8,15 +8,18 @@ import clerk from "astro-clerk-auth";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
 
+import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://skyfusion.dev",
   integrations: [tailwind({
-    applyBaseStyles: false,
-  }), mdx(), sitemap(), icon(), react(), clerk()],
+    applyBaseStyles: false
+  }), mdx(), sitemap(), icon(), react(), clerk(), robotsTxt()],
   output: "server",
   adapter: vercel({
-    webAnalytics: { enabled: true }
+    webAnalytics: {
+      enabled: true
+    }
   })
 });
