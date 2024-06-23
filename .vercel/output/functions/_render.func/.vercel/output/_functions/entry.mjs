@@ -3,7 +3,7 @@ import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLog
 import { A as AstroError, i as i18nNoLocaleFoundInPath, f as appendForwardSlash, j as joinPaths, g as MiddlewareNoDataOrNextCalled, h as MiddlewareNotAResponse, G as GetStaticPathsRequired, k as InvalidGetStaticPathsReturn, l as InvalidGetStaticPathsEntry, m as GetStaticPathsExpectedParams, n as GetStaticPathsInvalidRouteParam, t as trimSlashes, P as PageNumberParamNotFound, o as NoMatchingStaticPathFound, p as PrerenderDynamicEndpointPathCollide, q as ReservedSlotName, L as LocalsNotAnObject, r as PrerenderClientAddressNotAvailable, C as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, s as RewriteWithBodyUsed, u as AstroResponseHeadersReassigned, R as ResponseSentError, v as fileExtension, w as slash, x as prependForwardSlash, y as RewriteEncounteredAnError, z as removeTrailingForwardSlash } from "./chunks/astro/assets-service_C9ni2zx6.mjs";
 import { R as ROUTE_TYPE_HEADER, a as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, r as renderSlotToString, b as renderJSX, c as chunkToString, i as isRenderInstruction, d as clientLocalsSymbol, e as clientAddressSymbol$1, f as renderPage, g as renderEndpoint, A as ASTRO_VERSION, h as responseSentSymbol, j as REROUTABLE_STATUS_CODES } from "./chunks/astro/server_O8A7kLy3.mjs";
 import "cookie";
-import { A as AstroCookies, s as sequence, d as defineMiddleware, o as onRequest } from "./chunks/_astro-internal_middleware_CUz2zsnA.mjs";
+import { A as AstroCookies, s as sequence, d as defineMiddleware, o as onRequest } from "./chunks/_astro-internal_middleware_DBYeqBXf.mjs";
 import "clsx";
 import "kleur/colors";
 import "html-escaper";
@@ -2182,7 +2182,7 @@ const _manifest = Object.assign(manifest, {
   middleware: onRequest
 });
 const _args = {
-  "middlewareSecret": "62c0fd0a-1d22-4d1b-a7e3-9294fc087a3f",
+  "middlewareSecret": "906f9f9a-4e08-453f-92da-3cc73582fbb5",
   "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
