@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://skyfusion.dev/sitemap-index.xml
