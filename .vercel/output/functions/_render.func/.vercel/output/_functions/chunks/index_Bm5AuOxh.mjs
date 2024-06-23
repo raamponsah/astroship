@@ -1,0 +1,40 @@
+import { m as createAstro, n as createComponent, o as renderTemplate, t as renderComponent, p as maybeRenderHead, q as addAttribute } from "./astro/server_O8A7kLy3.mjs";
+import "kleur/colors";
+import { g as getCollection, a as getEntry } from "./_astro_content_8estDstX.mjs";
+import { $ as $$Layout } from "./Layout_cF0dRkyU.mjs";
+import { $ as $$Container } from "./container_DlK3dNHi.mjs";
+import moment from "moment";
+import $$PriceTag from "./price-tag_CL6ibc0W.mjs";
+import $$TrainingDetails from "./training-details_7QLcPPjn.mjs";
+import { b as $$ClerkLayout } from "./UserButton_3YDVigMJ.mjs";
+const $$Astro = createAstro("https://skyfusion.dev");
+async function getStaticPaths() {
+  const trainingEntries = await getCollection("training");
+  return trainingEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+const $$Index = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$Index;
+  const { slug } = Astro2.params;
+  if (slug === void 0) {
+    throw new Error("Slug is required");
+  }
+  const entry = await getEntry("training", slug);
+  if (entry === void 0) {
+    return Astro2.redirect("/404");
+  }
+  const { Content } = await entry.render();
+  return renderTemplate`${renderComponent($$result, "ClerkLayout", $$ClerkLayout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Layout", $$Layout, { "title": entry.data.title }, { "default": ($$result3) => renderTemplate` ${renderComponent($$result3, "Container", $$Container, {}, { "default": ($$result4) => renderTemplate` ${maybeRenderHead()}<div class="max-w-screen mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-40"> <!-- Banner Image with Text Overlay --> <div class="relative rounded-lg overflow-hidden bg-white shadow-md mb-8"> <img${addAttribute(entry.data.image.src, "src")}${addAttribute(entry.data.title, "alt")} class="w-full h-96 object-cover"> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="14" viewBox="0 0 31 14" fill="none" class="z-[2] absolute m-5 top-0 right-1  dark:bg-gray-900 bg-gray-0 rounded-full"><rect width="31" height="14" x="0" y="0" fill="#26d97f" fill-opacity="0.1" rx="6.5"></rect><path fill="#26d97f" d="M11.433 4.182V10h-.937L7.754 6.037h-.048V10H6.652V4.182h.943l2.739 3.966h.05V4.182h1.05ZM12.582 10V4.182h3.784v.883h-2.73v1.58h2.534v.883h-2.534v1.588h2.753V10h-3.807Zm6.084 0-1.643-5.818h1.134l1.048 4.275h.054l1.12-4.275h1.03l1.123 4.278h.051l1.048-4.278h1.134L23.123 10h-1.04l-1.165-4.082h-.045L19.705 10h-1.04Z"></path></svg> <!-- Course Title, Teaser, and Instructor Overlay --> <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50"> <h6 class="bg-lime-500 ring-1 ring-green-400 my-4 px-2 py-1 text-xs text-white rounded-full">${entry.data.workshopDetails.modeOfWorkshop}</h6> <h3 class=" text-xs md:text-md lg:text-xl font-bold uppercase">${entry.data.numberOfDays}-Day Training Workshop</h3> <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl  font-bold mb-2">${entry.data.title}</h1> <p class="text-sm sm:text-lg lg:text-xl  mb-2">${entry.data.teaser}</p> <p class="text-xs lg:text-sm mb-2 px-4 py-1 shadow-lg border border-dashed border-amber-400 backdrop-blur-lg  rounded-full">
+Workshop training starts in ${moment(entry?.data?.workshopDetails?.startDate).fromNow(true)} </p> <div class="text-center flex flex-col justify-center items-center lg:absolute lg:block lg:right-0 lg:bottom-0 p-4"> <h6 class="text-xs text-right font-bold uppercase">Instructor</h6> <a${addAttribute(`${entry?.data?.authorLink}`, "href")} target="_blank" class="underline">${entry?.data?.author}</a> </div> </div> </div> <!-- Course Description --> <div class="mb-8 lg:flex lg:justify-between"> <div class="lg:w-4/6"> <div> <h2 class="text-xl items-center flex gap-2 lg:text-xl font-bold mb-2"> <span class="">Course Description</span> </h2> <p class="text-gray-700 xs:text-xs sm:text-sm md:text-md lg:text-lg">${entry.data.description}</p> </div> <!-- Training/Workshop Details Component --> ${renderComponent($$result4, "TrainingDetails", $$TrainingDetails, { "entry": entry })} </div> <!-- PriceTag component details --> <div class="w-full lg:w-[420px] lg:mt-0 mt-4"> ${renderComponent($$result4, "PriceTag", $$PriceTag, { "entry": entry, "slug": entry?.slug })} </div> </div> <!-- Course Content --> <div class="mt-8"> <h2 class="text-xl lg:text-xl font-bold mb-4">Course Content</h2> <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> ${entry.data.content.map((module, index) => renderTemplate`<li class="bg-white border border-slate-300 rounded-lg p-4"> <span class="text-sm text-indigo-500">Module ${index + 1}</span> <h3 class="text-lg lg:text-xl font-bold mb-2">${module.title}</h3> <p class="text-gray-700 xs:text-xs sm:text-sm md:text-md lg:text-lg">${module.description}</p> </li>`)} </ul> </div> <!-- Requirements --> <div class="mt-8"> <h2 class="text-xl lg:text-2xl font-bold mb-4">Requirements</h2> <ul class="list-disc list-inside text-gray-700"> ${entry.data.requirements.map((requirement) => renderTemplate`<li class="xs:text-xs sm:text-sm md:text-md lg:text-lg">${requirement}</li>`)} </ul> </div> <!-- Course Content --> <div class="prose prose-lg mt-8"> ${renderComponent($$result4, "Content", Content, {})} </div> <!-- Instructor Bio and Workshop Registration --> <div class="mt-8 flex flex-col lg:flex-row lg:justify-between" id="instructor"> <!-- Instructor Bio --> <div class="lg:w-3/6"> <!-- Instructor Details --> </div> <!-- Workshop Registration --> <div class="mt-8 lg:mt-0"> <!-- Registration Form --> </div> </div> <!-- Back to Workshops Link --> <div class="text-center mt-8 mb-5"> <a href="/training" class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition inline-block">← Back to Workshops</a> </div> </div> ` })} ` })} ` })}`;
+}, "C:/Users/GATEWAY/DeveloperConsole/astroship/src/pages/training/[slug]/index.astro", void 0);
+const $$file = "C:/Users/GATEWAY/DeveloperConsole/astroship/src/pages/training/[slug]/index.astro";
+const $$url = "/training/[slug]";
+export {
+  $$Index as default,
+  $$file as file,
+  getStaticPaths,
+  $$url as url
+};
