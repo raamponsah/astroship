@@ -13,7 +13,12 @@ export default defineConfig({
   site: "https://skyfusion.dev",
   integrations: [tailwind({
     applyBaseStyles: false
-  }), mdx(), sitemap(), icon(), react(), clerk(), robotsTxt()],
+  }), mdx(), sitemap(), icon(), react(), clerk(), robotsTxt({
+    sitemap: [
+      'https://skyfusion.dev/sitemap-0.xml',
+
+    ],
+  })],
   output: "server",
   adapter: vercel({
     webAnalytics: {

@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-<url>
-  <loc>https://www.skyfusion.dev/</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/about</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/training</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/contact</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/sign-in</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/sign-up</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/training/advanced-nextjs-ai-integration-workshop</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/training/ai-web-development</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/training/pythonic-data-science</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/toc</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.skyfusion.dev/privacy</loc>
-  <lastmod>2024-06-23T19:31:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+  <url>
+    <loc>https://skyfusion.dev/</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/about</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/training</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/contact</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/sign-in</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/sign-up</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/training/advanced-nextjs-ai-integration-workshop</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/training/ai-web-development</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/training/pythonic-data-science</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/toc</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://skyfusion.dev/privacy</loc>
+    <lastmod>2024-06-23T22:04:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
 
 
 </urlset>
