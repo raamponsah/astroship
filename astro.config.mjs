@@ -6,8 +6,6 @@ import icon from "astro-icon";
 import vercel from "@astrojs/vercel/serverless";
 import clerk from "astro-clerk-auth";
 import react from "@astrojs/react";
-import node from "@astrojs/node";
-
 import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
