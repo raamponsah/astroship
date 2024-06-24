@@ -8,17 +8,16 @@ import clerk from "astro-clerk-auth";
 import react from "@astrojs/react";
 import robotsTxt from "astro-robots-txt";
 
+import metaTags from "astro-meta-tags";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://skyfusion.dev",
   integrations: [tailwind({
     applyBaseStyles: false
   }), mdx(), sitemap(), icon(), react(), clerk(), robotsTxt({
-    sitemap: [
-      'https://skyfusion.dev/sitemap-0.xml',
-
-    ],
-  })],
+    sitemap: ['https://skyfusion.dev/sitemap-0.xml']
+  }), metaTags()],
   output: "server",
   adapter: vercel({
     webAnalytics: {

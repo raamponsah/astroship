@@ -30,7 +30,7 @@ const { Content } = await entry.render();
 
 
 <ClerkLayout>
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title}  description={entry.data.description} imageUrl={entry.data.image.src} >
   <Container>
     <div class="max-w-screen mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-40">
 
@@ -81,7 +81,7 @@ const { Content } = await entry.render();
         <h2 class="text-xl lg:text-xl font-bold mb-4">Course Content</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {entry.data.content.map((module, index) => (
-            <li class="bg-white border border-slate-300 rounded-lg p-4">
+            <li class="bg-white border-4 border-indigo-600/30 rounded-lg p-4">
               <span class="text-sm text-indigo-500">Module {index + 1}</span>
               <h3 class="text-lg lg:text-xl font-bold mb-2">{module.title}</h3>
               <p class="text-gray-700 xs:text-xs sm:text-sm md:text-md lg:text-lg">{module.description}</p>

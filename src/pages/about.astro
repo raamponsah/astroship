@@ -5,17 +5,21 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Cta from "@components/cta.astro";
+import { SEO } from "astro-seo";
 
 // Filter team entries with 'draft: false' & date before current date
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 // export const prerender = true;
+
+
 ---
 
-// Assuming 'Fragment' is imported properly from React or another library
 
-<Layout title="About">
+
+<Layout title="About us" makeTitle="About us | Skyfusion" description="Skyfusion operates on a transformative model of practical, concise workshop sessions designed to drive meaningful change. As a pioneering tech education startup registered under Ghana Laws (registration number BN723620823), we specialize in demystifying complex technological concepts through hands-on learning experiences. Our workshops cater to a diverse audience, including corporate teams, individuals seeking career advancement, and students eager to bridge the gap between theory and application.">
+
   <Container>
     <Sectionhead>
       <Fragment slot="title">About</Fragment>

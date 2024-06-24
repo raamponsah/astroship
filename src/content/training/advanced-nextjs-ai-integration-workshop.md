@@ -5,7 +5,7 @@ teaser: "Transform into a fullstack web developer with expert-led training on Ne
 snippet: "Master the art of building scalable and robust web applications from scratch in just 5 days."
 description: "Join our Ultimate Fullstack Web Development Bootcamp and elevate your coding skills to the next level. This intensive workshop delves deep into the fullstack development process using Next.js, React, Prisma, and Tailwind CSS. From environment setup to deployment, gain hands-on experience and a comprehensive understanding of modern web application development. With two capstone projects, you'll apply your learning to real-world scenarios, ensuring you're ready to tackle any challenge. Enjoy daily breakfast and lunch while you learn!"
 numberOfDays: 5
-duration: 240
+duration: 40
 image: 
   src: "https://images.pexels.com/photos/13026926/pexels-photo-13026926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   alt: "Fullstack Web Development Bootcamp"

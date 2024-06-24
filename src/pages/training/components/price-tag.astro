@@ -4,7 +4,7 @@ const { auth } =  Astro.locals;
 
 ---
 
-<div class="relative  overflow-hidden border border-purple-400 bg-gradient-to-r from-pink-200 to-purple-300">
+<div class="relative  overflow-hidden shadow-xl rounded-lg border-purple-400 bg-gradient-to-r from-pink-200 to-purple-300">
     <div class="px-6 py-8 md:p-10">
       <h2 class="text-4xl  font-medium mb-4">
         GHS{Math.floor(entry?.data?.actualPrice! - (entry?.data?.actualPrice! * (entry?.data?.discount!)) / 100)} <span
@@ -130,7 +130,7 @@ const { auth } =  Astro.locals;
         class="bg-white min-w-full inline-block text-center text-purple-500 font-bold py-2 px-6 hover:bg-purple-100 hover:text-purple-600 transition duration-300 ease-in-out">
         Register Now
       </a>
-      : <a href="/sign-in" class="bg-white min-w-full inline-block text-center text-purple-500 font-bold py-2 px-6 hover:bg-purple-100 hover:text-purple-600 transition duration-300 ease-in-out">Sign In to register</a>
+      : <a href="/sign-in" class="hover:bg-white border-4 border-gray-50 rounded-xl min-w-full inline-block text-center hover:text-purple-500 font-bold py-2 px-6 text-purple-100 bg-purple-600 transition duration-300 ease-in-out">Sign In to register</a>
       }
       <small class="underline text-center flex justify-center items-center my-1">
         <a href="/sign-up">Sign up if you don't already have an account</a>
