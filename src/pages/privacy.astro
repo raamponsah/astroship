@@ -4,14 +4,30 @@ import '@fontsource-variable/work-sans';
 import '@fontsource-variable/manrope';
 import '../../app/globals.css';
 
+export const metadata = {
+  title: "Privacy Policy - Skyfusion",
+  description: "Skyfusion is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website and use our services.",
+  url: "/privacy-policy",
+  imageUrl: "/opengraph.jpg" // Update with the appropriate image URL if needed
+};
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Skyfusion</title>
+  <title>{metadata.title}</title>
+  <meta name="description" content={metadata.description}>
+  <link rel="canonical" href={new URL(metadata.url, Astro.site).toString()} />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={metadata.title}>
+  <meta property="og:description" content={metadata.description}>
+  <meta property="og:image" content={new URL(metadata.imageUrl, Astro.site).toString()}>
+  <meta property="og:url" content={new URL(metadata.url, Astro.site).toString()}>
+  <meta property="og:site_name" content="Skyfusion">
+
   <style>
       body {
           font-family: 'Poppins', sans-serif;
@@ -129,11 +145,43 @@ import '../../app/globals.css';
 </section>
 
 <section>
-  <h2>Contact Us</h2>
+  <h2 class="font-bold">Contact Us</h2>
   <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
   <p><strong>Email:</strong> admin@skyfusion.dev</p>
   <p><strong>WhatsApp:</strong> +233206171719</p>
 </section>
+
+<!-- Optional JSON-LD Structured Data -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://www.skyfusion.training/privacy-policy",
+    "name": "Privacy Policy - Skyfusion",
+    "description": "Skyfusion is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website and use our services.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Skyfusion",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.skyfusion.training/logo.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "admin@skyfusion.dev",
+        "telephone": "+233206171719",
+        "contactType": "Customer Service",
+        "areaServed": "GH",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.facebook.com/skyfusion",
+        "https://twitter.com/skyfusion",
+        "https://www.linkedin.com/company/skyfusion"
+      ]
+    }
+  }
+</script>
 </body>
 
 </html>

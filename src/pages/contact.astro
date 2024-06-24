@@ -5,13 +5,20 @@ import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 // export const prerender = true;
+
+export const metadata = {
+  title: "Contact Skyfusion",
+  description: "Get in touch with Skyfusion for inquiries and support. We are here to help.",
+  url: "/contact",
+  imageUrl: "/opengraph.jpg"  // Update with the appropriate image URL if needed
+};
 ---
 
-<Layout title="Contact">
+<Layout title={metadata.title} description={metadata.description} imageUrl={metadata.imageUrl}>
   <Container>
     <Sectionhead>
       <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
+      <Fragment slot="desc">We are here to help.</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16 px-10">
@@ -25,15 +32,14 @@ import { Icon } from "astro-icon/components";
           <div class="flex items-center mt-2 space-x-2 text-gray-600">
             <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
             <span>Taifa, Norway</span>
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /><a
-              href="mailto:info@skyfusion.training"
-              >info@skyfusion.training</a
-            >
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /><a
-              href="tel:+233 206 17 17 19">+233 206 17 17 19</a
-            >
+          </div>
+          <div class="flex items-center mt-2 space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" />
+            <a href="mailto:info@skyfusion.training">info@skyfusion.training</a>
+          </div>
+          <div class="flex items-center mt-2 space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="uil:phone" />
+            <a href="tel:+233206171719">+233 206 17 17 19</a>
           </div>
         </div>
       </div>
@@ -43,3 +49,26 @@ import { Icon } from "astro-icon/components";
     </div>
   </Container>
 </Layout>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Skyfusion",
+    "url": "https://www.skyfusion.training",
+    "logo": "https://www.skyfusion.training/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+233206171719",
+      "contactType": "Customer Service",
+      "email": "info@skyfusion.training",
+      "areaServed": "NO",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://www.facebook.com/skyfusion",
+      "https://twitter.com/skyfusion",
+      "https://www.linkedin.com/company/skyfusion"
+    ]
+  }
+</script>
