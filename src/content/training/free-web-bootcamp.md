@@ -2,7 +2,7 @@
 draft: false
 title: "Code Your Future: Free 3-Day Bootcamp on HTML/CSS/JavaScript"
 teaser: "Lay the foundation for web development with our beginner-friendly HTML, CSS, and JavaScript Bootcamp, setting you up for future success in fullstack development."
-snippet: "Master the basics of web development in just 3 days and prepare for our advanced NEXTJS Fullstack Web Development Workshop."
+snippet: "Master the basics of web development in just 3 days and prepare for our advanced [NEXTJS Fullstack Web Development Workshop](https://skyfusion.dev/training/advanced-nextjs-ai-integration-workshop)."
 description: "Join us for a comprehensive 3-day Bootcamp designed to introduce you to the essential building blocks of web development. Learn HTML, CSS, and JavaScript through hands-on sessions and practical exercises. This workshop serves as a crucial prequel to our upcoming NEXTJS Fullstack Web Development Workshop, ensuring you have a strong foundation to build upon. Suitable for beginners and those needing a refresher, this Bootcamp will equip you with the skills to create dynamic web pages and understand core web development concepts."
 numberOfDays: 3
 duration: 9

@@ -3,12 +3,12 @@
 const { title, description, imageUrl, date, author, category, link, status, starting, price, discount, modeOfWorkshop } = Astro.props;
 ---
 <div>
-  <div class="astro-card rounded-lg relative shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[500px]">
+  <div class="astro-card rounded-lg relative shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-[450px]">
     <div class="flex justify-between items-center">
       <span class={`absolute p-1 top-0 z-10 right-0 m-4 rounded text-sm ${status === 'Paid' ? 'bg-amber-400' : 'bg-lime-500'} text-white font-bold uppercase`}>
         {status}
       </span>
-      <span class="absolute backdrop-blur-lg p-1 top-0 z-10 left-0 m-4 rounded text-sm text-white font-bold uppercase">
+      <span class="absolute backdrop-blur-lg p-1 top-0 z-10 left-0 m-4 rounded text-xs text-white font-bold uppercase">
         STARTS {starting}
       </span>
     </div>
@@ -19,7 +19,7 @@ const { title, description, imageUrl, date, author, category, link, status, star
         <div class="absolute inset-0 flex items-end">
           <div class="astro-card__content px-6 py-4 text-white">
             <span class="astro-card__category text-sm font-medium uppercase tracking-wider">{category}</span>
-            <h2 class="astro-card__title text-xl font-medium leading-tight mt-2">{title}</h2>
+            <h2 class="astro-card__title text-lg font-medium leading-tight mt-2">{title}</h2>
             <div class="astro-card__meta flex items-center gap-3 mt-3">
               <span class="">
                 {modeOfWorkshop}
@@ -29,7 +29,7 @@ const { title, description, imageUrl, date, author, category, link, status, star
               </span>
             </div>
             <div class="flex justify-between mt-4 items-center">
-              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs md:text-sm lg:text-base xl:text-lg rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300 px-2 py-1 md:px-6 md:py-2 lg:px-2 lg:py-2">
+              <button class="astro-card__button bg-lime-600 hover:bg-lime-700 text-white text-xs  rounded-full inline-block uppercase tracking-wider font-semibold transition duration-300 px-2 py-1 md:px-6 md:py-2 lg:px-2 lg:py-2">
                 Enroll
               </button>
 

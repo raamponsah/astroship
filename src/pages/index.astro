@@ -15,7 +15,7 @@ const publishedTrainingEntries = await getCollection("training", ({ data }) => !
 // Sort content entries by publication date
 const latestTrainingEntries = publishedTrainingEntries
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-  .slice(0, 3);
+  .slice(0, 4);
 ---
 
 <Layout title="Home">
@@ -25,7 +25,7 @@ const latestTrainingEntries = publishedTrainingEntries
       <h2 class="flex justify-center my-6 items-center text-3xl">
         Trending Workshops
       </h2>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto px-4">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-screen-2xl mx-auto px-4">
         {latestTrainingEntries.map((trainingEntry) => (
           <li>
             <TrainingCard
