@@ -19,6 +19,9 @@ export default defineConfig({
     sitemap: ['https://skyfusion.dev/sitemap-0.xml']
   }), metaTags()],
   output: "server",
+  experimental: {
+    actions: true,
+  },
   adapter: vercel({
     webAnalytics: {
       enabled: true

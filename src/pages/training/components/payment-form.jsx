@@ -14,36 +14,8 @@ const PaymentForm = ({ entry, email }) => {
       return;
     }
 
-    const paystack = new PaystackPop();
-    paystack.newTransaction({
-      key: 'pk_live_5cc4fb269f5e4916a0da31e31476122aa25c0318',
-      email: email,
-      amount: price * 100, // Convert to kobo if the price is in Naira
-      metadata: {
-        custom_fields: [
-          {
-            display_name: "Customer Email",
-            variable_name: "customer_email",
-            value: email
-          },
-          {
-            display_name: "Workshop Entry",
-            variable_name: "workshop_entry",
-            value: entry?.data?.title
-          },
-          {
-            display_name: "Number of Days",
-            variable_name: "days",
-            value: entry?.data?.numberOfDays
-          },
-          {
-            display_name: "Discount Applied",
-            variable_name: "discount",
-            value: entry?.data?.discount || 0
-          }
-        ]
-      },
-      onSuccess: async (transaction) => {
+    if(price <=0){
+      (async (transaction) => {
         const { error } = await supabase
           .from('learner_ledger')
           .insert({
@@ -52,13 +24,60 @@ const PaymentForm = ({ entry, email }) => {
             paid: parseFloat(price),
             workshop_title:entry?.data?.title,
           })
+        window.location.href = '/success';
+      })()
+    }else{
+      const paystack = new PaystackPop();
+      paystack.newTransaction({
+        key: 'pk_live_5cc4fb269f5e4916a0da31e31476122aa25c0318',
+        email: email,
+        amount: price * 100, // Convert to kobo if the price is in Naira
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Customer Email",
+              variable_name: "customer_email",
+              value: email
+            },
+            {
+              display_name: "Workshop Entry",
+              variable_name: "workshop_entry",
+              value: entry?.data?.title
+            },
+            {
+              display_name: "Number of Days",
+              variable_name: "days",
+              value: entry?.data?.numberOfDays
+            },
+            {
+              display_name: "Discount Applied",
+              variable_name: "discount",
+              value: entry?.data?.discount || 0
+            }
+          ]
+        },
+        onSuccess: async (transaction) => {
+          const { error } = await supabase
+            .from('learner_ledger')
+            .insert({
+              email:email,
+              workshop_code:entry?.data?.workshopSecurityCode,
+              paid: parseFloat(price),
+              workshop_title:entry?.data?.title,
+            })
           window.location.href = '/success';
-      },
-      onCancel: () => {
-        console.log('Transaction was cancelled');
-      }
-    });
+        },
+        onCancel: () => {
+          console.log('Transaction was cancelled');
+        }
+      });
+    }
+
+
   };
+
+
+
 
   return (
     <div className="border border-purple-400 bg-gradient-to-r from-pink-200 to-purple-300 rounded p-8">
@@ -126,7 +145,7 @@ const PaymentForm = ({ entry, email }) => {
             type="submit"
             className="border border-purple-400 bg-gradient-to-r from-pink-600 to-purple-800 w-full hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
           >
-            Pay
+            {price <=0? "Secure your seat" : "Pay"}
           </button>
         </div>
         <small className="text-purple-800 underline text-xs">

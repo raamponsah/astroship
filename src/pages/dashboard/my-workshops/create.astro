@@ -1,0 +1,16 @@
+---
+import DashboardLayout from "@layouts/DashboardLayout.astro";
+import CreateWorkshopForm from "@components/forms/create-workshop.form"
+const owner = Astro.locals?.auth().sessionClaims
+console.log(owner.email);
+---
+
+<DashboardLayout title="Create Workshop">
+
+  <header class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold">Create Workshop</h2>
+  </header>
+
+  <CreateWorkshopForm owner={owner} client:load/>
+
+</DashboardLayout>

@@ -39,7 +39,7 @@
     "@types/react-dom": "^18.3.0",
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
-    "astro": "^4.11.0",
+    "astro": "^4.12.2",
     "astro-clerk-auth": "^0.7.0",
     "astro-icon": "^1.1.0",
     "astro-kinde": "^2.3.2",
