@@ -149,7 +149,7 @@ const PaymentForm = ({ entry, email }) => {
           </button>
         </div>
         <small className="text-purple-800 underline text-xs">
-          <a href="/toc" target="_blank">By paying you agree to our terms and conditions</a>
+          <a href="/toc" target="_blank">By clicking on the above button you agree to our terms and conditions</a>
         </small>
       </form>
     </div>
