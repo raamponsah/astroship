@@ -81,7 +81,7 @@ const PaymentForm = ({ entry, email }) => {
 
   return (
     <div className="border border-purple-400 bg-gradient-to-r from-pink-200 to-purple-300 rounded p-8">
-      <h2 className="text-xl lg:text-2xl rounded font-semibold mb-4">Payment Details</h2>
+      <h2 className="text-xl lg:text-2xl rounded font-semibold mb-4">{price <=0 ? "Secure your seat": "Payment Details"}</h2>
       <form id="paymentForm" className="mx-auto" onSubmit={handleSubmit}>
         <div className="mb-6">
           <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email Address</label>
